@@ -28,8 +28,21 @@ your data!
 Participants
 ============
 
-- Seventh Generation_
+- Seventh Generation: http://opendata.seventhgeneration.com
 - You? Fork the project and get your data out there!
 
+Partners
+========
 
-.. _Seventh Generation: http://opendata.seventhgeneration.com
+- Seventh Generation: http://www.seventhgeneration.com
+- CERES: http://www.ceres.org
+
+
+How To Get Started
+==================
+
+- Fork this project
+- Customize the CSS to add your company branding
+- Push to Heroku or other hosting service
+- Customize admin settings
+- Publish your data
