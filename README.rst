@@ -22,6 +22,12 @@ http://opendata.seventhgeneration.com). Other companies are strongly encouraged
 to do the same by forking this project, customizing it to their needs, and
 publishing their own datasets.
 
-The power of the platform grows with each new company. Join us by unlocking
+The power of the platform grows with each new participant. Join us by unlocking
 your data!
+
+Participants
+============
+
+- _Seventh Generation:http://opendata.seventhgeneration.com
+- You? Fork the project and get your data out there!
 
