@@ -28,6 +28,8 @@ your data!
 Participants
 ============
 
-- _Seventh Generation: http://opendata.seventhgeneration.com
+- Seventh Generation_
 - You? Fork the project and get your data out there!
 
+
+.. _Seventh Generation: http://opendata.seventhgeneration.com
