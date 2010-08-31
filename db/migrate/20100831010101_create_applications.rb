@@ -1,6 +1,6 @@
 class CreateApplications < ActiveRecord::Migration
   def self.up
-    create_table :applications do |t|
+    create_table :apps do |t|
       t.string :title, :null => false
       t.text :description
       t.string :submitter_name, :null => false
@@ -16,6 +16,6 @@ class CreateApplications < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :applications
+    drop_table :apps
   end
 end

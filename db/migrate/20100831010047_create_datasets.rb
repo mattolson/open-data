@@ -12,14 +12,14 @@ class CreateDatasets < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :datasets_applications do |t|
+    create_table :datasets_apps do |t|
       t.integer :dataset_id, :null => false
-      t.integer :application_id, :null => false
+      t.integer :app_id, :null => false
     end
   end
 
   def self.down
     drop_table :datasets
-    drop_table :datasets_applications
+    drop_table :datasets_apps
   end
 end

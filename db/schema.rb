@@ -11,7 +11,7 @@
 
 ActiveRecord::Schema.define(:version => 20100831034916) do
 
-  create_table "applications", :force => true do |t|
+  create_table "apps", :force => true do |t|
     t.string   "title",                                  :null => false
     t.text     "description"
     t.string   "submitter_name",                         :null => false
@@ -62,9 +62,9 @@ ActiveRecord::Schema.define(:version => 20100831034916) do
     t.datetime "updated_at"
   end
 
-  create_table "datasets_applications", :force => true do |t|
-    t.integer "dataset_id",     :null => false
-    t.integer "application_id", :null => false
+  create_table "datasets_apps", :force => true do |t|
+    t.integer "dataset_id", :null => false
+    t.integer "app_id",     :null => false
   end
 
   create_table "press_items", :force => true do |t|

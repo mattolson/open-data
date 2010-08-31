@@ -1,0 +1,2 @@
+module PressItemHelper
+end

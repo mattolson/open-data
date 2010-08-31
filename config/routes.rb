@@ -1,6 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  # The priority is based upon order of creation: first created -> highest priority.
-
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action
@@ -29,15 +27,23 @@ ActionController::Routing::Routes.draw do |map|
   #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
   #     admin.resources :products
   #   end
-
-  # See how all your routes lay out with "rake routes"
   
   # Home page
   map.root :controller => 'home', :action => 'index'
   
   # Sessions
-  map.resource :user_session, :only => [:new, :create, :destroy]
+  map.connect 'login', :controller => 'user_sessions', :action => 'new'
+  map.resource :user_sessions, :only => [:new, :create, :destroy]
 
   # Datasets
-  
+  map.resource :datasets
+
+  # Applications
+  map.resource :apps
+
+  # Companies
+  map.resource :companies
+
+  # Press
+  map.resource :press_items
 end
