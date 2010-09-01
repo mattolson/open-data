@@ -1,4 +1,4 @@
-class AppController < ApplicationController
+class DatasetsController < ApplicationController
   def index
   end
 
@@ -6,6 +6,7 @@ class AppController < ApplicationController
   end
 
   def new
+    @dataset = Dataset.new
   end
 
   def edit

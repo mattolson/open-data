@@ -33,17 +33,17 @@ ActionController::Routing::Routes.draw do |map|
   
   # Sessions
   map.connect 'login', :controller => 'user_sessions', :action => 'new'
-  map.resource :user_sessions, :only => [:new, :create, :destroy]
+  map.resource :user_session, :only => [:new, :create, :destroy]
 
   # Datasets
-  map.resource :datasets
+  map.resources :datasets
 
   # Applications
-  map.resource :apps
+  map.resources :apps
 
   # Companies
-  map.resource :companies
+  map.resources :companies
 
   # Press
-  map.resource :press_items
+  map.resources :press_items
 end

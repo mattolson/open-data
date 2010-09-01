@@ -1,0 +1,10 @@
+<% form_for @dataset, :url => datasets_path do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+  <p class="submit">
+    <%= f.submit "Login" %>
+  </p>
+<% end %>

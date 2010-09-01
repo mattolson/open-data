@@ -1,4 +1,4 @@
-class PressItemController < ApplicationController
+class PressItemsController < ApplicationController
   def index
   end
 
