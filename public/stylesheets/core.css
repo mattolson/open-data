@@ -1,0 +1,41 @@
+* { margin: 0; padding: 0; }
+
+/* Begin YUI font reset */
+body { background: #fff; color: #000; margin-bottom: 1em; font: 13px/1.231 verdana,arial,helvetica,clean,sans-serif; *font-size:small; *font:x-small; }
+#body_container { font-size: 93%; line-height: 130%; }
+table { font-size: inherit; font: 100%; }
+pre, code, kbd, samp, tt { font-family: monospace; *font-size: 108%; line-height: 100%; }
+/* End YUI font reset */
+
+/* Global */
+img { border: 0; vertical-align: middle; }
+a:link, a:visited { color: #363636; border-bottom: 1px dotted #363636; text-decoration: none; font-weight: bold; }
+a:hover, a:active { border-bottom-style: solid; }
+a.clear:link, a.clear:visited, a.clear:hover, a.clear:active { border: 0; }
+div.clear { clear: both; }
+div.page_container { width: 80%; min-width: 750px; max-width: 965px; margin: 0 auto; clear: both; }
+ul, ol { list-style-position: inside; }
+hr { margin: 1em 0; height: 1px; border-top: 1px solid #d9d9d9; }
+p { margin-top: 0.7em; }
+form p { margin-top: 0.5em; }
+form { margin-top: 1em; }
+form fieldset { border: 0; }
+form input, form textarea { padding: 2px; }
+label { color: #4f4f4f; display: block; font-weight: bold; }
+h1, h2, h3, h4, h5, h6, label.prominent { font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Helvetica, sans-serif; color: #4f4f4f; margin-top: 0.8em; margin-bottom: 0.2em; }
+h1 { font-size: 138.5%; font-weight: bold; }
+h2, label.prominent { font-size: 123.1%; font-weight: bold; }
+h3 { font-size: 108%; font-weight: bold; }
+h4, h5, h6 { font-size: 100%; font-weight: bold; }
+#flashes { width: 60%; min-width: 500px; max-width: 600px; margin: 1em auto; clear: both; }
+div.notice, div.error { padding: 7px 15px; border: 1px solid black; color: white; font-weight: bold; }
+div.notice a, div.error a { color: white; border-color: white; }
+div.notice { background: #06960e; }
+div.error { background: #bf290b; }
+div.notice img, div.error img { margin-right: 1em; }
+div.error h3 { margin: 0 auto; margin-top: -15px; width: 75%; font-size: 123.1%; color: #f5d851; }
+div.error ul { color: #f4e3bf; width: 75%; margin: 0.5em auto; }
+a.close_box { float: right; }
+a.close_box img { margin-right: 0; }
+span.tip { background-color: #fffbcf; }
+form p.submit { margin-top: 1em; }
