@@ -31,10 +31,6 @@ ActionController::Routing::Routes.draw do |map|
   # Home page
   map.root :controller => 'home', :action => 'index'
   
-  # Sessions
-  map.connect 'login', :controller => 'user_sessions', :action => 'new'
-  map.resource :user_session, :only => [:new, :create, :destroy]
-
   # Datasets
   map.resources :datasets
 
