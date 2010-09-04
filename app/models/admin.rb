@@ -3,5 +3,5 @@ class Admin < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :timeoutable, :lockable, :validatable
 
   # Setup accessible attributes
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :email, :password, :remember_me
 end

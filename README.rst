@@ -58,3 +58,4 @@ This application makes use of the following open source plugins/gems/engines:
 
 - Warden 0.10.7: http://wiki.github.com/hassox/warden
 - Devise 1.0.8: http://github.com/plataformatec/devise/tree/v1.0
+- Formtastic 1.0.1: http://github.com/justinfrench/formtastic

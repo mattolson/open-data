@@ -5,7 +5,7 @@ class DatasetsController < ApplicationController
   # GET /datasets
   # GET /datasets.xml
   def index
-    @datasets = Dataset.find(:all, :conditions => ["published_at is not null"])
+    @datasets = Dataset.all
 
     respond_to do |wants|
       wants.html # index.html.erb

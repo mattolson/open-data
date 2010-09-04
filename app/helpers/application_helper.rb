@@ -15,15 +15,17 @@ module ApplicationHelper
       flashes += "</div>"
     end
     
-    if flash[:error]
+    if flash[:alert] or flash[:error]
       flash_id = "flash_#{error_flash}"
       flashes += "<div id='#{flash_id}' class='error'>"
       flashes += link_to_function image_tag('icons/fam_silk/delete.png', :alt => 'X', :style => 'width:16px;height:16px;'), "Effect.Fade('#{flash_id}', {duration:0.3})", :class => 'clear close_box'
       flashes += image_tag('icons/fam_silk/error.png', :alt => 'Error', :style => 'width:16px;height:16px;')
+      flashes += flash[:alert]
       flashes += flash[:error]
       flashes += "</div>"
     end
     
+    flashes += '<script type="text/javascript">new Effect.Appear("' + flash_container + '", { duration:0.3, afterFinish: function() { if (IE7) {IE7.recalc();} } });</script>' unless flashes.blank?
   	flashes
   end
   
@@ -51,7 +53,7 @@ module ApplicationHelper
   # Return full set of stylesheet includes. If browser is specified, output override stylesheets if they exist.
   def stylesheets
     # First the core files
-    style_block = stylesheet_group(['core'])
+    style_block = stylesheet_group(['core', 'formtastic']) # 'formtastic_changes'
     
     # Controller specific css
     style_block += stylesheet_group([controller_name]) if File.exist?(File.join(ActionView::Helpers::AssetTagHelper::STYLESHEETS_DIR, "#{controller_name}.css"))

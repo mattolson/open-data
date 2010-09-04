@@ -41,5 +41,4 @@ class ApplicationController < ActionController::Base
   def user_agent
     request.user_agent ? request.user_agent.downcase : ''
   end
-  
 end
