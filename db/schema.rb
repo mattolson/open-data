@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100831034916) do
+ActiveRecord::Schema.define(:version => 20100904173835) do
 
   create_table "apps", :force => true do |t|
     t.string   "title",                                  :null => false
@@ -40,15 +40,6 @@ ActiveRecord::Schema.define(:version => 20100831034916) do
     t.datetime "updated_at"
   end
 
-  create_table "dataset_files", :force => true do |t|
-    t.integer  "dataset_id", :null => false
-    t.string   "filename",   :null => false
-    t.string   "mime_type",  :null => false
-    t.integer  "size",       :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "datasets", :force => true do |t|
     t.string   "title",                               :null => false
     t.text     "description"
@@ -60,6 +51,9 @@ ActiveRecord::Schema.define(:version => 20100831034916) do
     t.integer  "download_count",   :default => 0,     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "file_name",                           :null => false
+    t.string   "mime_type",                           :null => false
+    t.integer  "file_size",                           :null => false
   end
 
   create_table "datasets_apps", :force => true do |t|
