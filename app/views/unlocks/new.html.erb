@@ -1,12 +1,13 @@
-<h2>Resend unlock instructions</h2>
+<h2>Send Unlock Code</h2>
 
-<% form_for resource_name, resource, :url => unlock_path(resource_name) do |f| %>
-  <%= f.error_messages %>
-
-  <p><%= f.label :email %></p>
-  <p><%= f.text_field :email %></p>
-
-  <p><%= f.submit "Resend unlock instructions" %></p>
+<% semantic_form_for resource_name, resource, :url => unlock_path(resource_name) do |form| %>
+  <% form.inputs do -%>
+    <%= form.input :email %>
+  <% end -%>
+  
+  <% form.buttons do -%>
+    <%= form.commit_button :label => 'Send unlock code' %>
+  <% end -%>
 <% end %>
 
 <%= render :partial => "shared/devise_links" %>

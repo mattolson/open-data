@@ -20,8 +20,8 @@ module ApplicationHelper
       flashes += "<div id='#{flash_id}' class='error'>"
       flashes += link_to_function image_tag('icons/fam_silk/delete.png', :alt => 'X', :style => 'width:16px;height:16px;'), "Effect.Fade('#{flash_id}', {duration:0.3})", :class => 'clear close_box'
       flashes += image_tag('icons/fam_silk/error.png', :alt => 'Error', :style => 'width:16px;height:16px;')
-      flashes += flash[:alert]
-      flashes += flash[:error]
+      flashes += flash[:alert] if flash[:alert]
+      flashes += flash[:error] if flash[:error]
       flashes += "</div>"
     end
     
