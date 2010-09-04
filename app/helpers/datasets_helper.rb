@@ -1,2 +1,2 @@
-module DatasetHelper
+module DatasetsHelper
 end

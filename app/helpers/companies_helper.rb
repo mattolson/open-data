@@ -1,2 +1,2 @@
-module CompanyHelper
+module CompaniesHelper
 end

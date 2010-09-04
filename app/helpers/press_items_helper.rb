@@ -1,2 +1,2 @@
-module PressItemHelper
+module PressItemsHelper
 end
