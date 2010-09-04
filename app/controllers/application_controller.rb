@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  helper_method :current_user_session, :current_user, :controller_name, :set_page_title, :page_title, :add_css_include, :extra_css_includes, :add_js_include, :extra_js_includes, :user_agent
+  helper_method :current_user, :current_user_session, :controller_name, :page_title, :set_page_title, :add_css_include, :extra_css_includes, :add_js_include, :extra_js_includes, :user_agent
   filter_parameter_logging :password, :password_confirmation
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
