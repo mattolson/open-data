@@ -1,5 +1,6 @@
 class DatasetsController < ApplicationController
   before_filter :find_dataset, :only => [:show, :edit, :update, :destroy]
+  before_filter :authenticate_admin!, :except => [:index, :show]
 
   # GET /datasets
   # GET /datasets.xml

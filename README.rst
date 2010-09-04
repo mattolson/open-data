@@ -44,5 +44,17 @@ How To Get Started
 - Fork this project
 - Customize the CSS to add your company branding
 - Push to Heroku or other hosting service
-- Customize admin settings
+- Create admin account with console
+- Customize site settings
+- Customize Devise settings
+- Customize action mailer host in environments/production.rb
 - Publish your data
+
+
+Thanks
+======
+
+This application makes use of the following open source plugins/gems/engines:
+
+- Warden 0.10.7: http://wiki.github.com/hassox/warden
+- Devise 1.0.8: http://github.com/plataformatec/devise/tree/v1.0

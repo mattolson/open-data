@@ -42,4 +42,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Press
   map.resources :press_items
+
+  # Authentication
+  map.devise_for :admins
 end
