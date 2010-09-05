@@ -9,7 +9,7 @@ module ApplicationHelper
     if flash[:notice]
       flash_id = "flash_#{notice_flash}"
       flashes += "<div id='#{flash_id}' class='notice'>"
-      flashes += link_to_function image_tag('icons/fam_silk/delete.png', :alt => 'X', :style => 'width:16px;height:16px;'), "Effect.Fade('#{flash_id}', {duration:0.3})", :class => 'clear close_box'
+      flashes += link_to_function image_tag('icons/fam_silk/cross.png', :alt => 'X', :style => 'width:16px;height:16px;'), "Effect.Fade('#{flash_id}', {duration:0.3})", :class => 'clear close_box'
       flashes += image_tag('icons/fam_silk/information.png', :alt => 'Info', :style => 'width:16px;height:16px;')
       flashes += flash[:notice]
       flashes += "</div>"
@@ -18,7 +18,7 @@ module ApplicationHelper
     if flash[:alert] or flash[:error]
       flash_id = "flash_#{error_flash}"
       flashes += "<div id='#{flash_id}' class='error'>"
-      flashes += link_to_function image_tag('icons/fam_silk/delete.png', :alt => 'X', :style => 'width:16px;height:16px;'), "Effect.Fade('#{flash_id}', {duration:0.3})", :class => 'clear close_box'
+      flashes += link_to_function image_tag('icons/fam_silk/cross.png', :alt => 'X', :style => 'width:16px;height:16px;'), "Effect.Fade('#{flash_id}', {duration:0.3})", :class => 'clear close_box'
       flashes += image_tag('icons/fam_silk/error.png', :alt => 'Error', :style => 'width:16px;height:16px;')
       flashes += flash[:alert] if flash[:alert]
       flashes += flash[:error] if flash[:error]

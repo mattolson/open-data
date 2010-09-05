@@ -41,31 +41,24 @@ class DatasetsController < ApplicationController
   # POST /datasets.xml
   def create
     @dataset = Dataset.new(params[:dataset])
+    @dataset.save!
 
     respond_to do |wants|
-      if @dataset.save
-        flash[:notice] = 'Dataset was successfully created.'
-        wants.html { redirect_to(@dataset) }
-        wants.xml  { render :xml => @dataset, :status => :created, :location => @dataset }
-      else
-        wants.html { render :action => "new" }
-        wants.xml  { render :xml => @dataset.errors, :status => :unprocessable_entity }
-      end
+      flash[:notice] = 'Dataset was successfully created.'
+      wants.html { redirect_to(@dataset) }
+      wants.xml  { render :xml => @dataset, :status => :created, :location => @dataset }
     end
   end
 
   # PUT /datasets/1
   # PUT /datasets/1.xml
   def update
+    @dataset.update_attributes!(params[:dataset])
+
     respond_to do |wants|
-      if @dataset.update_attributes(params[:dataset])
-        flash[:notice] = 'Dataset was successfully updated.'
-        wants.html { redirect_to(@dataset) }
-        wants.xml  { head :ok }
-      else
-        wants.html { render :action => "edit" }
-        wants.xml  { render :xml => @dataset.errors, :status => :unprocessable_entity }
-      end
+      flash[:notice] = 'Dataset was successfully updated.'
+      wants.html { redirect_to(@dataset) }
+      wants.xml  { head :ok }
     end
   end
 

@@ -24,12 +24,13 @@ h3 { font-size: 108%; font-weight: bold; }
 h4, h5, h6 { font-size: 100%; font-weight: bold; }
 #flashes { width: 60%; min-width: 500px; max-width: 600px; margin: 1em auto; clear: both; }
 div.notice, div.error { padding: 7px 15px; border: 1px solid black; color: white; font-weight: bold; }
+div.notice h3, div.error h3 { margin: 0 auto; margin-top: -15px; width: 75%; font-size: 123.1%; }
+div.notice ul, div.error ul { width: 75%; margin: 0.5em auto; }
 div.notice a, div.error a { color: white; border-color: white; }
+div.notice img, div.error img { margin-right: 1em; }
 div.notice { background: #06960e; }
 div.error { background: #bf290b; }
-div.notice img, div.error img { margin-right: 1em; }
-div.error h3 { margin: 0 auto; margin-top: -15px; width: 75%; font-size: 123.1%; color: #f5d851; }
-div.error ul { color: #f4e3bf; width: 75%; margin: 0.5em auto; }
+div.error h3 { color: #f5d851; }
+div.error ul { color: #f4e3bf; }
 a.close_box { float: right; }
 a.close_box img { margin-right: 0; }
-

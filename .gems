@@ -1,5 +1,7 @@
 rails -v 2.3.8
-warden
+warden -v 0.10.7
 devise -v 1.0.8
-formtastic
+formtastic -v 1.0.1
+validates_timeliness -v 2.3.1
+paperclip -v 2.3.3
 
