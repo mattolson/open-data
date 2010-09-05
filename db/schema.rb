@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100904195206) do
+ActiveRecord::Schema.define(:version => 20100904232218) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(:version => 20100904195206) do
   create_table "datasets", :force => true do |t|
     t.string   "title",                               :null => false
     t.text     "description"
-    t.datetime "published_at",                        :null => false
     t.datetime "last_uploaded_at"
     t.boolean  "is_featured",      :default => false, :null => false
     t.date     "start_date"

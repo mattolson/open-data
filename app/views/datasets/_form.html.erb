@@ -1,10 +1,7 @@
-<% form_for @dataset, :url => datasets_path do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </p>
-  <p class="submit">
-    <%= f.submit "Save" %>
-  </p>
+<% semantic_form_for @dataset, :url => datasets_path do |form| %>
+  <%= form.inputs %>
+  
+  <% form.buttons do -%>
+    <%= form.commit_button %>
+  <% end -%>
 <% end %>
