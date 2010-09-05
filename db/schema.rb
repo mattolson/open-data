@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100905030405) do
+ActiveRecord::Schema.define(:version => 20100905031606) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
@@ -35,16 +35,15 @@ ActiveRecord::Schema.define(:version => 20100905030405) do
   add_index "admins", ["unlock_token"], :name => "index_admins_on_unlock_token", :unique => true
 
   create_table "apps", :force => true do |t|
-    t.string   "title",                                  :null => false
+    t.string   "title",                               :null => false
     t.text     "description"
-    t.string   "submitter_name",                         :null => false
-    t.string   "submitter_email",                        :null => false
+    t.string   "submitter_name",                      :null => false
+    t.string   "submitter_email",                     :null => false
     t.string   "author_link"
-    t.string   "application_link",                       :null => false
-    t.string   "screenshot_filename"
-    t.datetime "submitted_at",                           :null => false
+    t.string   "application_link",                    :null => false
+    t.datetime "submitted_at",                        :null => false
     t.datetime "published_at"
-    t.boolean  "is_featured",         :default => false, :null => false
+    t.boolean  "is_featured",      :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -68,7 +67,6 @@ ActiveRecord::Schema.define(:version => 20100905030405) do
     t.string   "link"
     t.string   "submitter_name",                     :null => false
     t.string   "submitter_email",                    :null => false
-    t.string   "logo_filename"
     t.datetime "submitted_at",                       :null => false
     t.datetime "published_at"
     t.boolean  "is_partner",      :default => false, :null => false
@@ -86,9 +84,6 @@ ActiveRecord::Schema.define(:version => 20100905030405) do
     t.integer  "download_count",   :default => 0,     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "file_name",                           :null => false
-    t.string   "mime_type",                           :null => false
-    t.integer  "file_size",                           :null => false
   end
 
   create_table "datasets_apps", :force => true do |t|
