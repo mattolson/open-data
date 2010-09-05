@@ -1,1 +1,10 @@
-<h1>Dataset</h1>
+<h1><%=h @dataset.title %></h1>
+
+<div id="description">
+  <%=h @dataset.description %>
+</div>
+
+<% if admin_signed_in? -%>
+  <%= link_to 'Edit', edit_dataset_path(@dataset) %><br />
+<% end -%>
+<%= link_to '&laquo; Back to datasets', datasets_path %>

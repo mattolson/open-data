@@ -53,7 +53,7 @@ module ApplicationHelper
   # Return full set of stylesheet includes. If browser is specified, output override stylesheets if they exist.
   def stylesheets
     # First the core files
-    style_block = stylesheet_group(['core', 'formtastic']) # 'formtastic_changes'
+    style_block = stylesheet_group(['core', 'formtastic', 'formtastic_changes'])
     
     # Controller specific css
     style_block += stylesheet_group([controller_name]) if File.exist?(File.join(ActionView::Helpers::AssetTagHelper::STYLESHEETS_DIR, "#{controller_name}.css"))

@@ -31,6 +31,10 @@ ActionController::Routing::Routes.draw do |map|
   # Home page
   map.root :controller => 'home', :action => 'index'
   
+  # Static pages
+  map.about 'about', :controller => 'home', :action => 'about'
+  map.contact 'contact', :controller => 'home', :action => 'contact'
+  
   # Datasets
   map.resources :datasets
 

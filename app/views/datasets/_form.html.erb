@@ -8,6 +8,6 @@
   <% end -%>
   
   <% form.buttons do -%>
-    <%= form.commit_button %>
+    <%= form.commit_button %> or <%= link_to 'cancel', @dataset.new_record? ? datasets_path : dataset_path(@dataset) %>
   <% end -%>
 <% end %>

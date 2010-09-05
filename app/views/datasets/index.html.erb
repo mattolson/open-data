@@ -1,1 +1,11 @@
 <h1>Datasets</h1>
+
+<ul>
+  <% @datasets.each do |dataset| -%>
+    <li><%= link_to h(dataset.title), dataset %></li>
+  <% end -%>
+</ul>
+
+<% if admin_signed_in? -%>
+  <p><%= link_to 'Add New Dataset', new_dataset_path %></p>
+<% end -%>
