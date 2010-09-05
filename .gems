@@ -1,3 +1,5 @@
 rails -v 2.3.8
-authlogic
+warden
+devise -v 1.0.8
+formtastic
 
