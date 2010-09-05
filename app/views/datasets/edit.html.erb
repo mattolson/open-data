@@ -1,3 +1,5 @@
 <% set_page_title 'Edit Dataset' -%>
 <h1>Edit '<%=h @dataset.title %>'</h1>
-<%= render :partial => 'form' %>
+<% semantic_form_for @dataset, :url => dataset_path(@dataset), :method => :put do |form| %>
+  <%= render :partial => 'form', :locals => {:form => form} %>
+<% end %>

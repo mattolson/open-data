@@ -1,3 +1,5 @@
 <% set_page_title 'Add Dataset' -%>
 <h1>Add New Dataset</h1>
-<%= render :partial => 'form' %>
+<% semantic_form_for @dataset, :url => datasets_path do |form| %>
+  <%= render :partial => 'form', :locals => {:form => form} %>
+<% end %>
