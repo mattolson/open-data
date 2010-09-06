@@ -26,6 +26,7 @@ class DatasetsController < ApplicationController
   # GET /datasets/new.xml
   def new
     @dataset = Dataset.new
+		@max_files = Dataset::MAX_ATTACHMENTS
 
     respond_to do |wants|
       wants.html # new.html.erb
@@ -35,6 +36,7 @@ class DatasetsController < ApplicationController
 
   # GET /datasets/1/edit
   def edit
+		@max_files = Dataset::MAX_ATTACHMENTS - @dataset.attachments.count
   end
 
   # POST /datasets
@@ -77,5 +79,4 @@ class DatasetsController < ApplicationController
     def find_dataset
       @dataset = Dataset.find(params[:id])
     end
-
 end

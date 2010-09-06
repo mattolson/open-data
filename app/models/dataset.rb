@@ -1,6 +1,6 @@
 class Dataset < ActiveRecord::Base
   # Associations
-  has_many :attachments, :as => :attachable, :dependent => :destroy
+  has_many :attachments, :class_name => '::Attachment', :as => :attachable, :dependent => :destroy # class_name to avoid collision with Paperclip
   has_and_belongs_to_many :apps
   
   # Validations
@@ -11,5 +11,9 @@ class Dataset < ActiveRecord::Base
   validates_date :end_date, :allow_blank => true
 
   # Set attributes available for mass-assignment
-  attr_accessible :title, :description, :start_date, :end_date, :is_featured
+  attr_accessible :title, :description, :start_date, :end_date, :is_featured, :attachments_attributes
+  accepts_nested_attributes_for :attachments, :allow_destroy => true
+  
+  # Constants
+  MAX_ATTACHMENTS = 5
 end

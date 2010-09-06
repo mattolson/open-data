@@ -1,11 +1,27 @@
   <% form.inputs do -%>
     <%= form.input :title %>
     <%= form.input :description %>
-    <%= form.input :start_date, :hint => 'mm/dd/YYYY' %>
-    <%= form.input :end_date, :hint => 'mm/dd/YYYY' %>
+    <%= form.input :start_date, :required => false, :hint => 'mm/dd/YYYY' %>
+    <%= form.input :end_date, :required => false, :hint => 'mm/dd/YYYY' %>
     <%= form.input :is_featured, :required => false, :label => 'Featured on home page' %>
+    <%= form.label 'Data File(s) *' %>
+    <div id="file_upload" style="width: 75%; float: right; margin-bottom: 2em; ">
+      <%= form.file_field :attachment %>
+    	<ul id="pending_files" style="margin-top: 1em;">
+    	  <% form.semantic_fields_for :attachments do |attachment| -%>
+    	    <li id="attachment_<%= attachment.id %>">
+    	      <%= attachment.object.attachment_file_name %>
+    	    </li>
+    		<% end -%>
+    	</ul>
+    	<script type="text/javascript">
+    		var file_selector = new MultiSelector($('pending_files'), <%= @max_files %>);
+    		file_selector.addElement($('dataset_attachment'));
+    	</script>
+    </div>
+    <div class="clear"></div>
   <% end -%>
-  
+	
   <% form.buttons do -%>
     <%= form.commit_button %> or <%= link_to 'cancel', @dataset.new_record? ? datasets_path : dataset_path(@dataset) %>
   <% end -%>
