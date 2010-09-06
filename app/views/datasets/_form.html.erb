@@ -3,7 +3,7 @@
     <%= form.input :description %>
     <%= form.input :start_date, :hint => 'mm/dd/YYYY' %>
     <%= form.input :end_date, :hint => 'mm/dd/YYYY' %>
-    <%= form.input :is_featured, :required => false %>
+    <%= form.input :is_featured, :required => false, :label => 'Featured on home page' %>
   <% end -%>
   
   <% form.buttons do -%>
