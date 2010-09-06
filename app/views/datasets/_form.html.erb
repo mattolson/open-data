@@ -1,27 +1,38 @@
+<% content_for :js do -%>
+  Helpers.focusOnLoad('dataset_title');
+  Helpers.addToDomReady(function() {
+  	var file_selector = new MultiSelector($('pending_files'), <%= @dataset.attachments.count %>, <%= @max_files %>);
+  	file_selector.addElement($('new_attachment'), 'dataset');
+  });
+<% end -%>
+
   <% form.inputs do -%>
     <%= form.input :title %>
     <%= form.input :description %>
     <%= form.input :start_date, :required => false, :hint => 'mm/dd/YYYY' %>
     <%= form.input :end_date, :required => false, :hint => 'mm/dd/YYYY' %>
-    <%= form.input :is_featured, :required => false, :label => 'Featured on home page' %>
+
     <%= form.label 'Data File(s) *' %>
-    <div id="file_upload" style="width: 75%; float: right; margin-bottom: 2em; ">
-      <%= form.file_field :attachment %>
-    	<ul id="pending_files" style="margin-top: 1em;">
+    <div id="file_upload">
+    	<p class="inline-hints">
+    	  You can add up to <%= @max_files %> files of 20 MB each.<br />
+    	  Allowed types: pdf, csv, txt, xml, rdf, kml, kmz.
+    	</p>
+      <input id="new_attachment" type="file" />
+    	<ul id="pending_files">
     	  <% form.semantic_fields_for :attachments do |attachment| -%>
-    	    <li id="attachment_<%= attachment.id %>">
-    	      <%= attachment.object.attachment_file_name %>
+    	    <li id="attachment_<%= attachment.object.id %>">
+    	      <%= link_to(attachment.object.attachment_file_name, attachment.object.attachment.url, :target => :_blank) %>
+    	      <%= attachment.check_box :_destroy %><%= attachment.label :_destroy, :label => 'Remove' %>
     	    </li>
-    		<% end -%>
+        <% end -%>
     	</ul>
-    	<script type="text/javascript">
-    		var file_selector = new MultiSelector($('pending_files'), <%= @max_files %>);
-    		file_selector.addElement($('dataset_attachment'));
-    	</script>
     </div>
-    <div class="clear"></div>
+
+    <%= form.input :is_featured, :required => false, :label => 'Featured on home page' %>
   <% end -%>
 	
   <% form.buttons do -%>
     <%= form.commit_button %> or <%= link_to 'cancel', @dataset.new_record? ? datasets_path : dataset_path(@dataset) %>
   <% end -%>
+

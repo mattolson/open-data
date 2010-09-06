@@ -1,19 +1,57 @@
+
+//****************************************************************************************
+//  Misc Helper Functions
+//****************************************************************************************
+var Helpers = {
+	// Adds the given code to the end of the given function
+	addCodeToFunction: function(func, code){
+		if (typeof(func) == 'undefined')
+			return code;
+		else
+			return function() { func(); code(); }
+	},
+
+	// Adds the given code block to a global function that gets attached to the
+	// dom:loaded event just once in layout.
+    onDomReady: function() {},
+	addToDomReady: function(fn)
+	{
+		Helpers.onDomReady = Helpers.addCodeToFunction(Helpers.onDomReady, fn);
+	},
+
+	focusOnLoad: function(element_name)
+	{
+		Helpers.addToDomReady(function() { $(element_name).select(); $(element_name).focus(); });
+	},
+
+	// Open popup for textile reference
+	openTextileReference: function() {
+		window.open(
+			"http://hobix.com/textile/quick.html",
+			"redRef",
+			"height=600,width=550,channelmode=0,dependent=0," +
+			"directories=0,fullscreen=0,location=0,menubar=0," +
+			"resizable=0,scrollbars=1,status=1,toolbar=0"
+		);
+	}
+};
+
 // Multiple File Upload
 //    from: http://www.practicalecommerce.com/blogs/post/432-Multiple-Attachments-in-Rails
-function MultiSelector(list_target, max) {
+function MultiSelector(list_target, count, max) {
     this.list_target = list_target;
-    this.count = 0;
+    this.count = count;
     this.max = (max ? max : -1);
 
-    this.addElement = function(element) {
+    this.addElement = function(element, record_type) {
         if (element.tagName == 'INPUT' && element.type == 'file') {
-            element.name = 'dataset[attachments_attributes][][attachment]';
+            element.name = record_type + '[attachments_attributes][' + this.count + '][attachment]';
             element.multi_selector = this;
             element.onchange = function() {
                 var new_element = document.createElement('input');
                 new_element.type = 'file';
                 this.parentNode.insertBefore(new_element, this);
-                this.multi_selector.addElement(new_element);
+                this.multi_selector.addElement(new_element, record_type);
                 this.multi_selector.addListRow(this);
                 this.style.position = 'absolute';
                 this.style.left = '-1000px';
@@ -34,7 +72,7 @@ function MultiSelector(list_target, max) {
         new_row_button.href = '#';
         new_row_button.innerHTML = 'Remove';
         new_row.element = element;
-        new_row_button.onclick= function() {
+        new_row_button.onclick = function() {
             this.parentNode.element.parentNode.removeChild(this.parentNode.element);
             this.parentNode.parentNode.removeChild(this.parentNode);
             this.parentNode.element.multi_selector.count--;

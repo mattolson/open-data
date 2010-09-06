@@ -6,5 +6,6 @@
 
 <% if admin_signed_in? -%>
   <%= link_to 'Edit', edit_dataset_path(@dataset) %><br />
+  <%= link_to 'Delete', dataset_path(@dataset), :method => :delete, :confirm => 'This will permanently destroy the dataset and its associated files. Are you sure?' %><br />
 <% end -%>
 <%= link_to '&laquo; Back to datasets', datasets_path %>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100905031606) do
+ActiveRecord::Schema.define(:version => 20100906223908) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
@@ -48,6 +48,11 @@ ActiveRecord::Schema.define(:version => 20100905031606) do
     t.datetime "updated_at"
   end
 
+  create_table "apps_datasets", :force => true do |t|
+    t.integer "dataset_id", :null => false
+    t.integer "app_id",     :null => false
+  end
+
   create_table "attachments", :force => true do |t|
     t.integer  "attachable_id"
     t.string   "attachable_type"
@@ -84,11 +89,6 @@ ActiveRecord::Schema.define(:version => 20100905031606) do
     t.integer  "download_count",   :default => 0,     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "datasets_apps", :force => true do |t|
-    t.integer "dataset_id", :null => false
-    t.integer "app_id",     :null => false
   end
 
   create_table "press_items", :force => true do |t|

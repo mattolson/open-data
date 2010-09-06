@@ -34,3 +34,9 @@ div.error h3 { color: #f5d851; }
 div.error ul { color: #f4e3bf; }
 a.close_box { float: right; }
 a.close_box img { margin-right: 0; }
+
+/* Datasets */
+#file_upload { width: 41%; float: right; padding: 2%; margin-top: 1em; margin-bottom: 1em; margin-right: 30%; border: 1px solid #dedede; }
+#file_upload p.inline-hints, #file_upload input[type="file"] { margin-bottom: 1em; }
+#pending_files { list-style: disc inside; }
+#pending_files input { margin: 0 0.5em 0 1em; }
