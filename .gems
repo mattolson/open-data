@@ -4,4 +4,5 @@ devise -v 1.0.8
 formtastic -v 1.0.1
 validates_timeliness -v 2.3.1
 paperclip -v 2.3.3
+acts-as-taggable-on -v 2.0.6
 
