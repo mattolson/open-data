@@ -1,7 +1,14 @@
 class Dataset < ActiveRecord::Base
+  # Constants
+  MAX_ATTACHMENTS = 5
+
   # Associations
   has_many :attachments, :class_name => '::Attachment', :as => :attachable, :dependent => :destroy # class_name to avoid collision with Paperclip
   has_and_belongs_to_many :apps
+  
+  # Tagging
+  acts_as_taggable
+  acts_as_taggable_on :categories, :certifications, :standards
   
   # Validations
   validates_presence_of :title, :description
@@ -14,6 +21,4 @@ class Dataset < ActiveRecord::Base
   attr_accessible :title, :description, :start_date, :end_date, :is_featured, :attachments_attributes
   accepts_nested_attributes_for :attachments, :allow_destroy => true
   
-  # Constants
-  MAX_ATTACHMENTS = 5
 end
