@@ -12,6 +12,7 @@ img { border: 0; vertical-align: middle; }
 a:link, a:visited { color: #363636; border-bottom: 1px dotted #363636; text-decoration: none; font-weight: bold; }
 a:hover, a:active { border-bottom-style: solid; }
 a.clear:link, a.clear:visited, a.clear:hover, a.clear:active { border: 0; }
+ul.as-selections a:link, ul.as-selections a:visited, ul.as-selections a:hover, ul.as-selections a:active { border: 0; }
 div.clear { clear: both; }
 div.page_container { width: 80%; min-width: 750px; max-width: 965px; margin: 0 auto; clear: both; }
 ul, ol { list-style-position: inside; }
@@ -34,6 +35,7 @@ div.error h3 { color: #f5d851; }
 div.error ul { color: #f4e3bf; }
 a.close_box { float: right; }
 a.close_box img { margin-right: 0; }
+form.formtastic div.as-results { margin-left: 25%; }
 
 /* Datasets */
 #file_upload { width: 41%; float: right; padding: 2%; margin-top: 1em; margin-bottom: 1em; margin-right: 30%; border: 1px solid #dedede; }

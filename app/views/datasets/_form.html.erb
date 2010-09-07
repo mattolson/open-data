@@ -7,6 +7,14 @@
   $('#dataset_title').focus();
 	var upload_manager = new UploadManager($('#pending_files'), <%= @dataset.attachments.count %>, <%= @max_files %>);
 	upload_manager.addElement($('#new_attachment'), 'dataset');
+	$("#dataset_tag_list").autoSuggest([
+	  {value: "21", name: "Mick Jagger"},
+    {value: "43", name: "Johnny Storm"},
+    {value: "46", name: "Richard Hatch"},
+    {value: "54", name: "Kelly Slater"},
+    {value: "55", name: "Rudy Hamilton"},
+    {value: "79", name: "Michael Jordan"}
+	], {startText: '', selectedItemProp: "name", searchObjProps: "name", asHtmlID: "dataset_tag_list"});
 <% end -%>
 
   <% form.inputs do -%>
@@ -31,7 +39,9 @@
         <% end -%>
     	</ul>
     </div>
+    <div class="clear"></div>
 
+    <%= form.input :tag_list, :as => :string %>
     <%= form.input :is_featured, :required => false, :label => 'Featured on home page' %>
   <% end -%>
 	
