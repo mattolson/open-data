@@ -1,9 +1,12 @@
-<% content_for :js do -%>
-  Helpers.focusOnLoad('dataset_title');
-  Helpers.addToDomReady(function() {
-  	var file_selector = new MultiSelector($('pending_files'), <%= @dataset.attachments.count %>, <%= @max_files %>);
-  	file_selector.addElement($('new_attachment'), 'dataset');
-  });
+<% 
+  add_js_include('jquery.autoSuggest.packed')
+  add_css_include('autoSuggest')
+%>
+
+<% content_for :domready do -%>
+  $('#dataset_title').focus();
+	var upload_manager = new UploadManager($('#pending_files'), <%= @dataset.attachments.count %>, <%= @max_files %>);
+	upload_manager.addElement($('#new_attachment'), 'dataset');
 <% end -%>
 
   <% form.inputs do -%>

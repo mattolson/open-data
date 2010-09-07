@@ -64,7 +64,8 @@ Many thanks to these fine contributors to the open source community!
 - FAMFAMFAM Silk 1.3: http://famfamfam.com/lab/icons/silk/
 - validates_timeliness 2.2.2: http://github.com/adzap/validates_timeliness/
 - acts_as_taggable_on 2.0.6: http://github.com/mbleigh/acts-as-taggable-on
-
+- jQuery 1.4.2: http://jquery.com/
+- AutoSuggest jQuery plugin: http://code.drewwilson.com/entry/autosuggest-jquery-plugin
 
 License
 =======

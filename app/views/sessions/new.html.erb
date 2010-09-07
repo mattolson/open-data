@@ -1,5 +1,5 @@
-<% content_for :js do -%>
-  Helpers.focusOnLoad('<%= resource_name %>_email');
+<% content_for :domready do -%>
+  $('#<%= resource_name %>_email').focus();
 <% end -%>
 
 <h2>Admin Sign In</h2>

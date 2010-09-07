@@ -105,7 +105,7 @@ module ApplicationHelper
   # Return full set of javascript includes
   def javascripts
     # First the core files
-    scripts = ['prototype', 'effects', 'application']
+    scripts = ['jquery-1.4.2.min', 'application']
 
     # Controller specific js
     scripts << controller_name if File.exist?(File.join(ActionView::Helpers::AssetTagHelper::JAVASCRIPTS_DIR, "#{controller_name}.js"))
