@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100911193254) do
+ActiveRecord::Schema.define(:version => 20100911212647) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
@@ -54,17 +54,16 @@ ActiveRecord::Schema.define(:version => 20100911193254) do
   end
 
   create_table "attachments", :force => true do |t|
-    t.integer  "attachable_id"
-    t.string   "attachable_type"
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "dataset_id",              :null => false
   end
 
-  add_index "attachments", ["attachable_id", "attachable_type"], :name => "index_attachments_on_attachable_id_and_attachable_type"
+  add_index "attachments", ["dataset_id"], :name => "index_attachments_on_dataset_id"
 
   create_table "companies", :force => true do |t|
     t.string   "name",                               :null => false

@@ -56,7 +56,7 @@ class DatasetsController < ApplicationController
   # PUT /datasets/1.xml
   def update
     @dataset.update_attributes!(params[:dataset])
-
+    
     respond_to do |wants|
       flash[:notice] = 'Dataset was successfully updated.'
       wants.html { redirect_to(@dataset) }
@@ -75,7 +75,7 @@ class DatasetsController < ApplicationController
     end
   end
 
-  private
+  protected
     def find_dataset
       @dataset = Dataset.find(params[:id])
     end

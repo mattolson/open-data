@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
   
   protected
     # Override default rescue
-    alias orig_rescue_action_in_public rescue_action_in_public
+    alias :orig_rescue_action_in_public :rescue_action_in_public
     def rescue_action_in_public(exception)
       # Log error using ExceptionLoggable unless a 404 or typical invalid record exception that gets handled below
       if response_code_for_rescue(exception) != :not_found && !exception.is_a?(ActiveRecord::RecordInvalid)
@@ -58,7 +58,7 @@ class ApplicationController < ActionController::Base
     # By rescuing ActiveRecord validation errors, we handle the common pattern
     # of save/update followed by redirection. This allows us to use save! in our
     # controller methods.
-    alias orig_rescue_action_locally rescue_action_locally
+    alias :orig_rescue_action_locally :rescue_action_locally
     def rescue_action_locally(exception)
       # Check for special cases
       if exception.is_a?(ActiveRecord::RecordInvalid)

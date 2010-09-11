@@ -48,6 +48,8 @@ How To Get Started
 - Customize site settings
 - Customize Devise settings
 - Customize action mailer host in environments/production.rb
+- Signup for S3
+- Copy config/s3_credentials.yml.template to config/s3_credentials.yml and populate it
 - Publish your data
 
 
