@@ -8,7 +8,7 @@ class Dataset < ActiveRecord::Base
   
   # Tagging
   acts_as_taggable
-  acts_as_taggable_on :categories, :certifications, :standards
+  acts_as_taggable_on :certifications, :standards
   
   # Validations
   validates_presence_of :title, :description
@@ -16,9 +16,9 @@ class Dataset < ActiveRecord::Base
   validates_length_of :description, :maximum => 10.kilobytes
   validates_date :start_date, :allow_blank => true
   validates_date :end_date, :allow_blank => true
+  validates_inclusion_of :category, :in => Configs.select_lists['dataset_categories'].values.keys, :if => :category
 
   # Set attributes available for mass-assignment
-  attr_accessible :title, :description, :start_date, :end_date, :is_featured, :attachments_attributes
+  attr_accessible :title, :description, :start_date, :end_date, :is_featured, :attachments_attributes, :category, :tag_list, :standard_list, :certification_list
   accepts_nested_attributes_for :attachments, :allow_destroy => true
-  
 end

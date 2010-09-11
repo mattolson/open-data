@@ -50,3 +50,14 @@ function UploadManager(list_target, count, max) {
         upload_manager.list_target.append(new_row);
     };
 }
+
+// Autosuggest plugin copies values into a hidden field, so copy them
+// back into the correct input field for save.
+function prepAutoSuggestForm(auto_suggest_ids) {
+    for (i = 0; i < auto_suggest_ids.length; i++) {
+        id = auto_suggest_ids[i];
+        $("#"+id).val($("#as-values-"+id).val());
+        if ($("#"+id).val() != '')
+            $("#"+id).hide();
+    }
+}

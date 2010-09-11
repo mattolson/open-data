@@ -26,7 +26,7 @@ class DatasetsController < ApplicationController
   # GET /datasets/new.xml
   def new
     @dataset = Dataset.new
-    @max_files = Dataset::MAX_ATTACHMENTS
+    prep_dataset_form
 
     respond_to do |wants|
       wants.html # new.html.erb
@@ -36,7 +36,7 @@ class DatasetsController < ApplicationController
 
   # GET /datasets/1/edit
   def edit
-    @max_files = Dataset::MAX_ATTACHMENTS
+    prep_dataset_form
   end
 
   # POST /datasets
@@ -78,5 +78,21 @@ class DatasetsController < ApplicationController
   private
     def find_dataset
       @dataset = Dataset.find(params[:id])
+    end
+    
+    def prep_dataset_form
+      @max_files = Dataset::MAX_ATTACHMENTS
+
+      tags = Dataset.tag_counts_on(:tags)
+      @tags = tags.empty? ? Configs.dataset_tags : tags.map { |tag| {:value => tag.name} }
+      @current_tags = @dataset.tag_list.map { |tag| {:value => tag} }
+
+      standards = Dataset.tag_counts_on(:standards)
+      @standards = standards.empty? ? Configs.dataset_standards : standards.map { |tag| {:value => tag.name} }
+      @current_standards = @dataset.standard_list.map { |tag| {:value => tag} }
+
+      certifications = Dataset.tag_counts_on(:certifications)
+      @certifications = certifications.empty? ? Configs.dataset_certifications : certifications.map { |tag| {:value => tag.name} }
+      @current_certifications = @dataset.certification_list.map { |tag| {:value => tag} }
     end
 end

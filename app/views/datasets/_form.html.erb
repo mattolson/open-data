@@ -7,14 +7,12 @@
   $('#dataset_title').focus();
 	var upload_manager = new UploadManager($('#pending_files'), <%= @dataset.attachments.count %>, <%= @max_files %>);
 	upload_manager.addElement($('#new_attachment'), 'dataset');
-	$("#dataset_tag_list").autoSuggest([
-	  {value: "21", name: "Mick Jagger"},
-    {value: "43", name: "Johnny Storm"},
-    {value: "46", name: "Richard Hatch"},
-    {value: "54", name: "Kelly Slater"},
-    {value: "55", name: "Rudy Hamilton"},
-    {value: "79", name: "Michael Jordan"}
-	], {startText: '', selectedItemProp: "name", searchObjProps: "name", asHtmlID: "dataset_tag_list"});
+	
+	$("#dataset_tag_list").autoSuggest(<%= @tags.to_json %>, {preFill: <%= @current_tags.to_json %>, asHtmlID: "tag_list", startText: '', neverSubmit: true});
+	$("#dataset_standard_list").autoSuggest(<%= @standards.to_json %>, {preFill: <%= @current_standards.to_json %>, asHtmlID: "standard_list", startText: '', neverSubmit: true});
+	$("#dataset_certification_list").autoSuggest(<%= @certifications.to_json %>, {preFill: <%= @current_certifications.to_json %>, asHtmlID: "certification_list", startText: '', neverSubmit: true});
+
+  $("#dataset_form").submit(function() { prepAutoSuggestForm(['tag_list', 'standard_list', 'certification_list']); });
 <% end -%>
 
   <% form.inputs do -%>
@@ -41,7 +39,10 @@
     </div>
     <div class="clear"></div>
 
-    <%= form.input :tag_list, :as => :string %>
+    <%= form.input :category, :as => :select, :collection => Configs.select_lists['dataset_categories'].list %>
+    <%= form.input :tag_list, :as => :string, :label => 'Tags', :required => false, :hint => 'Try to reuse tags for maximum usability. Separate with comma or tab.' %>
+    <%= form.input :standard_list, :as => :string, :label => 'Standards', :required => false %>
+    <%= form.input :certification_list, :as => :string, :label => 'Certifications', :required => false %>
     <%= form.input :is_featured, :required => false, :label => 'Featured on home page' %>
   <% end -%>
 	

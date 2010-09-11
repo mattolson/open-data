@@ -44,3 +44,5 @@ end
 
 # Change default date format
 ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS[:default] = "%m/%d/%Y"
+
+require 'config/configs'

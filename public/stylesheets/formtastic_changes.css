@@ -13,3 +13,4 @@ form.formtastic fieldset ol li fieldset legend { margin-left: -6px;}
 
 --------------------------------------------------------------------------------------------------*/
 form.formtastic { margin-top: 1em; }
+form.formtastic input[type="text"], form.formtastic textarea { padding: 0.2em; }
