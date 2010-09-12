@@ -46,3 +46,13 @@ end
 ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS[:default] = "%m/%d/%Y"
 
 require 'config/configs'
+
+# Add support for creating a slug whenenver a tag is created
+module ActsAsTaggableOn
+  class Tag
+    before_create :generate_slug
+    def generate_slug
+      self.slug = self.name.parameterize
+    end
+  end
+end

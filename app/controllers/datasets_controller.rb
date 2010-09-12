@@ -78,8 +78,8 @@ class DatasetsController < ApplicationController
   end
   
   def tagged_with
-    @tag = params[:tag]
-    @datasets = Dataset.tagged_with(@tag)
+    @tag = ActsAsTaggableOn::Tag.find_by_slug(params[:tag])
+    @datasets = Dataset.tagged_with(@tag.name)
 
     respond_to do |wants|
       wants.html { render :action => :index }

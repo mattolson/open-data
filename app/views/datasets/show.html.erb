@@ -28,7 +28,7 @@
   <% end -%>
   <% unless @dataset.tag_list.blank? -%>
     <dt>TAGS</dt>
-    <dd><%= @dataset.tag_list.map { |tag| link_to(h(tag), tagged_datasets_path(tag)) }.join(',') %></dd>
+    <dd><%= @dataset.tags.map { |tag| link_to(h(tag.name), tagged_datasets_path(tag.slug)) }.join(',') %></dd>
   <% end -%>
 </dl>
 <% end -%>

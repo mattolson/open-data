@@ -1,4 +1,4 @@
-<h1>Datasets<%= " in category '#{h(category_name(@category))}'" if @category %><%= " tagged '#{h(@tag)}'" if @tag %></h1>
+<h1>Datasets<%= " in category '#{h(category_name(@category))}'" if @category %><%= " tagged '#{h(@tag.name)}'" if @tag %></h1>
 
 <ul>
   <% @datasets.each do |dataset| -%>

@@ -7,8 +7,7 @@ class Dataset < ActiveRecord::Base
   has_and_belongs_to_many :apps
   
   # Tagging
-  acts_as_taggable
-  acts_as_taggable_on :certifications, :standards
+  acts_as_taggable_on :tags, :certifications, :standards
   
   # Validations
   validates_presence_of :title, :description
