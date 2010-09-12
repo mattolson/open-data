@@ -19,11 +19,11 @@ Rails::Initializer.run do |config|
   # Specify gems that this application depends on and have them installed with rake gems:install
   config.gem 'warden'
   config.gem 'devise', :version => '1.0.8'
+  config.gem 'aws-s3'
   config.gem 'paperclip'
   config.gem 'formtastic'
   config.gem 'validates_timeliness'
   config.gem 'acts-as-taggable-on'
-  config.gem 'aws-s3'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
