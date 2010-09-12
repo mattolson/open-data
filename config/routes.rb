@@ -37,7 +37,7 @@ ActionController::Routing::Routes.draw do |map|
   map.license 'license', :controller => 'home', :action => 'license'
   
   # Datasets
-  map.resources :datasets
+  map.resources :datasets, :member => {:count_download => :post}
   map.tagged_datasets 'datasets/tagged/:tag', :controller => 'datasets', :action => 'tagged_with'
   map.dataset_category 'datasets/categories/:category', :controller => 'datasets', :action => 'in_category'
 

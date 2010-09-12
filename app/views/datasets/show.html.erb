@@ -1,7 +1,9 @@
 <% content_for :domready do -%>
   $("#dataset_downloads a").tooltip({ effect: 'slide'}).dynamic();
   $("#dataset_downloads a").click(function() {
-    
+    $.post('<%= count_download_dataset_path(@dataset) %>', function(data) {
+      $("#download_count").html(parseInt($("#download_count").html())+1);
+    });
   });
 <% end -%>
 
@@ -41,7 +43,7 @@
 </dl>
 <% end -%>
 
-<h1 class="section_head">Download This Data</h1>
+<h1 class="section_head"><span id="download_counter"><span id="download_count"><%= @dataset.download_count %></span> Downloads</span>Download This Data</h1>
 <ul id="dataset_downloads">
   <% @dataset.attachments.each do |a| -%>
     <li class="button">

@@ -1,5 +1,5 @@
 class DatasetsController < ApplicationController
-  before_filter :find_dataset, :only => [:show, :edit, :update, :destroy]
+  before_filter :find_dataset, :only => [:show, :edit, :update, :destroy, :count_download]
   before_filter :authenticate_admin!, :except => [:index, :show]
 
   # GET /datasets
@@ -96,6 +96,14 @@ class DatasetsController < ApplicationController
     respond_to do |wants|
       wants.html { render :action => :index }
       wants.xml  { render :xml => @datasets }
+    end
+  end
+  
+  def count_download
+    @dataset.download_count += 1
+    @dataset.save!
+    respond_to do |wants|
+      wants.js { head :ok }
     end
   end
 
