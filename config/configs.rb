@@ -8,11 +8,12 @@ class Configs
   def self.select_lists
     return @@SELECT_LISTS if defined?(@@SELECT_LISTS)
     
-    # flag_categories
+    # dataset_categories
+    # The value also acts as a url slug
     dataset_categories = SelectList.new
-    dataset_categories.add(1, 'Direct')
-    dataset_categories.add(2, 'Indirect')
-    dataset_categories.add(3, 'Philanthropy')
+    dataset_categories.add('direct', 'Direct')
+    dataset_categories.add('indirect', 'Indirect')
+    dataset_categories.add('philanthropy', 'Philanthropy')
 
     # Return the list of lists
     @@SELECT_LISTS = {

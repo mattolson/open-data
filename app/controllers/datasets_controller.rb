@@ -88,7 +88,7 @@ class DatasetsController < ApplicationController
   end
   
   def in_category
-    @category = params[:category].to_i
+    @category = params[:category]
     raise ActiveRecord::RecordNotFound unless Configs.select_lists['dataset_categories'].values.keys.include?(@category)
 
     @datasets = Dataset.find(:all, :conditions => ['category = ?', @category])
