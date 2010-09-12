@@ -105,7 +105,7 @@ module ApplicationHelper
   # Return full set of javascript includes
   def javascripts
     # First the core files
-    scripts = ['jquery-1.4.2.min', 'application']
+    scripts = ['jquery-1.4.2.min', 'jquery.tools.min', 'application']
 
     # Controller specific js
     scripts << controller_name if File.exist?(File.join(ActionView::Helpers::AssetTagHelper::JAVASCRIPTS_DIR, "#{controller_name}.js"))
@@ -136,5 +136,9 @@ module ApplicationHelper
   
   def category_name(cat)
     Configs.select_lists['dataset_categories'].lookup(cat)
+  end
+  
+  def file_extension(filename)
+    File.extname(filename).gsub(/^\.+/, "")
   end
 end

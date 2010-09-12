@@ -36,6 +36,12 @@ div.error ul { color: #f4e3bf; }
 a.close_box { float: right; }
 a.close_box img { margin-right: 0; }
 form.formtastic div.as-results { margin-left: 25%; }
+dl.inline dt, dl.inline dd { float: left; }
+dl.inline dt { clear: left; margin-right: 1em; font-weight: bold; width: 3em; }
+
+/* Tooltips */
+.tooltip { display: none; background: transparent url(/images/black_arrow.png) no-repeat; font-size: 12px; height: 70px; width: 160px; padding: 25px; color: #fff; }
+.tooltip.bottom { background-image: url(/images/black_arrow_bottom.png); padding-top: 40px; height: 55px; }
 
 /* Datasets */
 #file_upload { width: 41%; float: right; padding: 2%; margin-top: 1em; margin-bottom: 1em; margin-right: 30%; border: 1px solid #dedede; }

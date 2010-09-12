@@ -1,3 +1,11 @@
+<% content_for :domready do -%>
+  $("#dataset_downloads a").tooltip({ effect: 'slide'}).dynamic();
+  $("#dataset_downloads a").click(function() {
+    
+  });
+<% end -%>
+
+<h1 class="section_head">Selected Dataset</h1>
 <h1 id="dataset_title"><%=h @dataset.title %></h1>
 <h2 id="dataset_date_range"><%= format_timerange(@dataset.start_date, @dataset.end_date) %></h2>
 
@@ -32,6 +40,27 @@
   <% end -%>
 </dl>
 <% end -%>
+
+<h1 class="section_head">Download This Data</h1>
+<ul id="dataset_downloads">
+  <% @dataset.attachments.each do |a| -%>
+    <li class="button">
+      <%= link_to(file_extension(a.attachment_file_name).upcase, a.attachment.url) %>
+      <div class="tooltip">
+        <dl class="inline">
+          <dt>File:</dt>
+          <dd><%=h a.attachment_file_name %></dd>
+          <dt>Date:</dt>
+          <dd><%= format_date(a.attachment_updated_at) %></dd>
+          <dt>Size:</dt>
+          <dd><%= number_to_human_size(a.attachment_file_size) %></dd>
+        </dl>
+      </div>
+    </li>
+  <% end -%>
+</ul>
+<p>This data is available free of charge under an <%= link_to 'open source license', license_path %>.</p>
+
 
 <% if admin_signed_in? -%>
   <%= link_to 'Edit', edit_dataset_path(@dataset) %><br />
