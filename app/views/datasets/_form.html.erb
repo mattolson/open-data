@@ -30,10 +30,12 @@
       <input id="new_attachment" type="file" />
     	<ul id="pending_files">
     	  <% form.semantic_fields_for :attachments do |attachment| -%>
-    	    <li id="attachment_<%= attachment.object.id %>">
-    	      <%= link_to(attachment.object.attachment_file_name, attachment.object.attachment.url, :target => :_blank) %>
-    	      <%= attachment.check_box :_destroy %><%= attachment.label :_destroy, :label => 'Remove' %>
-    	    </li>
+    	    <% if attachment.object.id -%>
+      	    <li id="attachment_<%= attachment.object.id %>">
+      	      <%= link_to(attachment.object.attachment_file_name, attachment.object.attachment.url, :target => :_blank) %>
+      	      <%= attachment.check_box :_destroy %><%= attachment.label :_destroy, :label => 'Remove' %>
+      	    </li>
+      	  <% end -%>
         <% end -%>
     	</ul>
     </div>

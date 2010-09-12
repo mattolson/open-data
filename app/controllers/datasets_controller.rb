@@ -27,7 +27,7 @@ class DatasetsController < ApplicationController
   def new
     @dataset = Dataset.new
     prep_dataset_form
-
+    
     respond_to do |wants|
       wants.html # new.html.erb
       wants.xml  { render :xml => @dataset }
@@ -43,6 +43,7 @@ class DatasetsController < ApplicationController
   # POST /datasets.xml
   def create
     @dataset = Dataset.new(params[:dataset])
+    prep_dataset_form
     @dataset.save!
 
     respond_to do |wants|
@@ -55,6 +56,7 @@ class DatasetsController < ApplicationController
   # PUT /datasets/1
   # PUT /datasets/1.xml
   def update
+    prep_dataset_form
     @dataset.update_attributes!(params[:dataset])
     
     respond_to do |wants|

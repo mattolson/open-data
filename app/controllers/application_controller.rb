@@ -79,7 +79,7 @@ class ApplicationController < ActionController::Base
     
       # Default error response
       respond_to do |format|
-        format.html { @redirect_on_error ? redirect_to(@redirect_on_error) : render(:action => record.new_record? ? 'new' : 'edit') }
+        format.html { @redirect_on_error ? redirect_to(@redirect_on_error) : render(:action => record.new_record? ? :new : :edit) }
         format.xml { render :xml => record.errors, :status => :unprocessable_entity }
       end
     end
