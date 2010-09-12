@@ -37,6 +37,8 @@ ActionController::Routing::Routes.draw do |map|
   
   # Datasets
   map.resources :datasets
+  map.tagged_datasets 'datasets/tagged/:tag', :controller => 'datasets', :action => 'tagged_with'
+  map.dataset_category 'datasets/categories/:category', :controller => 'datasets', :action => 'in_category'
 
   # Applications
   map.resources :apps

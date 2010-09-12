@@ -58,15 +58,14 @@ class ApplicationController < ActionController::Base
     # By rescuing ActiveRecord validation errors, we handle the common pattern
     # of save/update followed by redirection. This allows us to use save! in our
     # controller methods.
-    alias :orig_rescue_action_locally :rescue_action_locally
     def rescue_action_locally(exception)
       # Check for special cases
       if exception.is_a?(ActiveRecord::RecordInvalid)
         # Handle common ActiveRecord validation exception centrally
         render_invalid_record(exception.record)
       else
-        # Call parent implementation
-        orig_rescue_action_locally(exception)
+        # Call public implementation
+        orig_rescue_action_in_public(exception)
       end
     end
 

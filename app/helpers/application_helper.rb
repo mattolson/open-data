@@ -119,4 +119,22 @@ module ApplicationHelper
     # Return script block
     javascript_include_tag(*scripts) + "\n"
   end
+  
+  def format_date(d)
+    d.strftime("%b %d, %Y").upcase
+  end
+  
+  def format_timerange(d1, d2)
+    if d1 and d2
+      "#{format_date(d1)} through #{format_date(d2)}"
+    elsif d1
+      "Starting #{format_date(d1)}"
+    elsif d2
+      "Ending #{format_date(d2)}"
+    end
+  end
+  
+  def category_name(cat)
+    Configs.select_lists['dataset_categories'].lookup(cat)
+  end
 end

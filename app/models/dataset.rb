@@ -11,7 +11,7 @@ class Dataset < ActiveRecord::Base
   acts_as_taggable_on :certifications, :standards
   
   # Validations
-  validates_presence_of :title, :description, :attachments
+  validates_presence_of :title, :description
   validates_length_of :title, :maximum => 256
   validates_length_of :description, :maximum => 10.kilobytes
   validates_date :start_date, :allow_blank => true
@@ -21,4 +21,13 @@ class Dataset < ActiveRecord::Base
   # Set attributes available for mass-assignment
   attr_accessible :title, :description, :start_date, :end_date, :is_featured, :attachments_attributes, :category, :tag_list, :standard_list, :certification_list
   accepts_nested_attributes_for :attachments, :allow_destroy => true
+  
+  # Hooks
+  before_save :update_uploaded_at
+  
+  def update_uploaded_at
+    if attachments.any? { |a| a.new_record? }
+      self.last_uploaded_at = Date.today
+    end
+  end
 end

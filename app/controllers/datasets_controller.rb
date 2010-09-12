@@ -76,6 +76,28 @@ class DatasetsController < ApplicationController
       wants.xml  { head :ok }
     end
   end
+  
+  def tagged_with
+    @tag = params[:tag]
+    @datasets = Dataset.tagged_with(@tag)
+
+    respond_to do |wants|
+      wants.html { render :action => :index }
+      wants.xml  { render :xml => @datasets }
+    end
+  end
+  
+  def in_category
+    @category = params[:category].to_i
+    raise ActiveRecord::RecordNotFound unless Configs.select_lists['dataset_categories'].values.keys.include?(@category)
+
+    @datasets = Dataset.find(:all, :conditions => ['category = ?', @category])
+
+    respond_to do |wants|
+      wants.html { render :action => :index }
+      wants.xml  { render :xml => @datasets }
+    end
+  end
 
   protected
     def find_dataset

@@ -1,8 +1,37 @@
-<h1><%=h @dataset.title %></h1>
+<h1 id="dataset_title"><%=h @dataset.title %></h1>
+<h2 id="dataset_date_range"><%= format_timerange(@dataset.start_date, @dataset.end_date) %></h2>
 
-<div id="description">
+<dl id="dataset_stats">
+  <dt>RELEASED</dt>
+  <dd><%= format_date(@dataset.created_at) %></dd>
+  <dt>UPDATED</dt>
+  <dd><%= format_date(@dataset.last_uploaded_at) %></dd>
+  <% unless @dataset.standard_list.empty? -%>
+    <dt>STANDARDS</dt>
+    <dd><%=h @dataset.standard_list %></dd>
+  <% end -%>
+  <% unless @dataset.certification_list.empty? -%>
+    <dt>CERTIFIED BY</dt>
+    <dd><%=h @dataset.certification_list %></dd>
+  <% end -%>
+</dl>
+
+<div id="dataset_description">
   <%=h @dataset.description %>
 </div>
+
+<% unless @dataset.category.blank? and @dataset.tag_list.blank? -%>
+<dl id="dataset_taxonomy">
+  <% unless @dataset.category.blank? -%>
+    <dt>CATEGORY</dt>
+    <dd><%= link_to(h(category_name(@dataset.category)), dataset_category_path(@dataset.category)) %></dd>
+  <% end -%>
+  <% unless @dataset.tag_list.blank? -%>
+    <dt>TAGS</dt>
+    <dd><%= @dataset.tag_list.map { |tag| link_to(h(tag), tagged_datasets_path(tag)) }.join(',') %></dd>
+  <% end -%>
+</dl>
+<% end -%>
 
 <% if admin_signed_in? -%>
   <%= link_to 'Edit', edit_dataset_path(@dataset) %><br />
