@@ -3,7 +3,13 @@
 <h1>Applications</h1>
 <ul>
   <% @apps.each do |app| -%>
-    <li><%= link_to h(app.title), app.application_link, :target => :_blank %></li>
+    <li>
+      <%= link_to h(app.title), app.application_link, :target => :_blank %>
+      <% if admin_signed_in? -%>
+        <%= link_to 'Edit', edit_app_path(app) %>
+        <%= link_to 'Delete', app_path(app), :method => :delete, :confirm => 'This will permanently delete the app from the site. Are you sure?' %>
+      <% end -%>
+    </li>
   <% end -%>
 </ul>
 

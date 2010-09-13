@@ -6,9 +6,9 @@
   <%= form.input :title %>
   <%= form.input :description %>
   <%= form.input :application_link, :label => 'Application website' %>
-  <%= form.input :submitter_name, :label => 'Your name' %>
-  <%= form.input :submitter_email, :label => 'Your email' %>
-  <%= form.input :author_link, :label => 'Your website', :required => false, :hint => 'If different from application link' %>
+  <%= form.input :submitter_name, :label => 'Author name' %>
+  <%= form.input :submitter_email, :label => 'Author email', :hint => 'Will not be published or shared' %>
+  <%= form.input :author_link, :label => 'Author website', :required => false, :hint => 'If different from application site' %>
   <%= form.input :screenshot %>
   <% if admin_signed_in? -%>
     <%= form.input :is_featured, :required => false, :label => 'Featured on home page' %>
@@ -17,6 +17,6 @@
 <% end -%>
 
 <% form.buttons do -%>
-  <%= form.commit_button %> or <%= link_to 'cancel', @app.new_record? ? apps_path : app_path(@app) %>
+  <%= form.commit_button %> or <%= link_to 'cancel', apps_path %>
 <% end -%>
 
