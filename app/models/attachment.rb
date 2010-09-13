@@ -3,9 +3,13 @@ class Attachment < ActiveRecord::Base
   belongs_to :dataset
 
   # Paperclip functionality
-  has_attached_file :attachment, :storage => :s3, :s3_credentials => 'config/s3_credentials.yml', :path => 'datasets/:id/:filename',
-                    :s3_headers => {'Content-Disposition' => 'attachment'}
-  
+  has_attached_file :attachment,
+                    :storage        => :s3,
+                    :path           => 'datasets/:id/:filename',
+                    :s3_headers     => {'Content-Disposition' => 'attachment'},
+                    :bucket         => ENV['S3_BUCKET'],
+                    :s3_credentials => { :access_key_id     => ENV['S3_KEY'],
+                                         :secret_access_key => ENV['S3_SECRET'] }
   # Validations
   validates_attachment_presence :attachment
   validates_attachment_size :attachment, :less_than => 50.megabytes

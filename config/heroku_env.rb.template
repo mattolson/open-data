@@ -1,0 +1,9 @@
+# This file contains the ENV vars necessary to run the app locally.  
+# Some of these values are sensitive, and some are developer specific.
+# On Heroku, these settings are created with heroku config:add
+#
+# DO NOT CHECK THIS FILE INTO VERSION CONTROL
+
+ENV['S3_KEY']            = 'seekrit'
+ENV['S3_SECRET']         = 'seekrit'
+ENV['S3_BUCKET']         = 'seekrit'
