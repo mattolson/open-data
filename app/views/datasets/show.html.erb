@@ -66,8 +66,7 @@
 <h1 class="section_head">Applications Of This Data</h1>
 
 <h1 class="section_head">Discussion &amp; Suggestions</h1>
-<div id="dataset_comments">
-</div>
+<%= render :partial => '/shared/disqus', :locals => {:page_id => "#{dataset_path(@dataset)}"} %>
 
 <% if admin_signed_in? -%>
   <%= link_to 'Edit', edit_dataset_path(@dataset) %><br />
