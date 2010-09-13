@@ -19,7 +19,7 @@ Rails::Initializer.run do |config|
   # Specify gems that this application depends on and have them installed with rake gems:install
   config.gem 'warden', :version => '0.10.7'
   config.gem 'devise', :version => '1.0.8'
-  config.gem 'aws-s3', :version => '0.6.2'
+  config.gem 'aws-s3', :version => '0.6.2', :lib => 'aws/s3'
   config.gem 'paperclip', :version => '2.3.3'
   config.gem 'formtastic', :version => '1.0.1'
   config.gem 'validates_timeliness', :version => '2.3.1'
