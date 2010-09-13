@@ -1,2 +1,6 @@
-<h1>App#edit</h1>
-<p>Find me in app/views/app/edit.html.erb</p>
+<% set_page_title 'Edit Application' -%>
+
+<h1>Edit '<%=h @app.title %>'</h1>
+<% semantic_form_for @app, :url => app_path(@app), :method => :put, :html => {:multipart => true} do |form| %>
+  <%= render :partial => 'form', :locals => {:form => form} %>
+<% end %>

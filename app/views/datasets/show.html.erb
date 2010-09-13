@@ -1,3 +1,5 @@
+<% set_page_title h(@dataset.title) -%>
+
 <% content_for :domready do -%>
   $("#dataset_downloads a").tooltip({ effect: 'slide'}).dynamic();
   $("#dataset_downloads a").click(function() {

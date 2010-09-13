@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100912055037) do
+ActiveRecord::Schema.define(:version => 20100913060655) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
@@ -35,17 +35,20 @@ ActiveRecord::Schema.define(:version => 20100912055037) do
   add_index "admins", ["unlock_token"], :name => "index_admins_on_unlock_token", :unique => true
 
   create_table "apps", :force => true do |t|
-    t.string   "title",                               :null => false
+    t.string   "title",                                      :null => false
     t.text     "description"
-    t.string   "submitter_name",                      :null => false
-    t.string   "submitter_email",                     :null => false
+    t.string   "submitter_name",                             :null => false
+    t.string   "submitter_email",                            :null => false
     t.string   "author_link"
-    t.string   "application_link",                    :null => false
-    t.datetime "submitted_at",                        :null => false
-    t.datetime "published_at"
-    t.boolean  "is_featured",      :default => false, :null => false
+    t.string   "application_link",                           :null => false
+    t.boolean  "is_featured",             :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_published",            :default => false, :null => false
+    t.string   "screenshot_file_name"
+    t.string   "screenshot_content_type"
+    t.integer  "screenshot_file_size"
+    t.datetime "screenshot_updated_at"
   end
 
   create_table "apps_datasets", :force => true do |t|

@@ -7,4 +7,7 @@ class HomeController < ApplicationController
 
   def contact
   end
+
+  def license
+  end
 end

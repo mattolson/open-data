@@ -1,1 +1,10 @@
+<% set_page_title 'Applications' -%>
+
 <h1>Applications</h1>
+<ul>
+  <% @apps.each do |app| -%>
+    <li><%= link_to h(app.title), app.application_link, :target => :_blank %></li>
+  <% end -%>
+</ul>
+
+<p><%= link_to 'Add Your Application', new_app_path %></p>

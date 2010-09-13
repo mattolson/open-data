@@ -1,0 +1,22 @@
+<% content_for :domready do -%>
+  $('#app_title').focus();
+<% end -%>
+
+<% form.inputs do -%>
+  <%= form.input :title %>
+  <%= form.input :description %>
+  <%= form.input :application_link, :label => 'Application website' %>
+  <%= form.input :submitter_name, :label => 'Your name' %>
+  <%= form.input :submitter_email, :label => 'Your email' %>
+  <%= form.input :author_link, :label => 'Your website', :required => false, :hint => 'If different from application link' %>
+  <%= form.input :screenshot %>
+  <% if admin_signed_in? -%>
+    <%= form.input :is_featured, :required => false, :label => 'Featured on home page' %>
+    <%= form.input :is_published, :required => false, :label => 'Published' %>
+  <% end -%>
+<% end -%>
+
+<% form.buttons do -%>
+  <%= form.commit_button %> or <%= link_to 'cancel', @app.new_record? ? apps_path : app_path(@app) %>
+<% end -%>
+
