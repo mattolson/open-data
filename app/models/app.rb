@@ -4,7 +4,7 @@ class App < ActiveRecord::Base
 
   # Paperclip functionality
   has_attached_file :screenshot,
-                    :styles         => { :thumb => ["150x150>", :png] },
+                    :styles         => { :thumb => ["100x100>", :png] },
                     :storage        => :s3,
                     :path           => "#{ ENV['RAILS_ENV'] }/apps/:id/:style_:filename",
                     :bucket         => ENV['S3_BUCKET'],

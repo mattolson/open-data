@@ -36,6 +36,7 @@ div.error ul { color: #f4e3bf; }
 a.close_box { float: right; }
 a.close_box img { margin-right: 0; }
 form.formtastic div.as-results { margin-left: 25%; }
+form.formtastic p.standalone { padding-left: 25%; margin-bottom: 1.5em; }
 dl.inline dt, dl.inline dd { float: left; }
 dl.inline dt { clear: left; margin-right: 1em; font-weight: bold; width: 3em; }
 

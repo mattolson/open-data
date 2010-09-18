@@ -5,7 +5,8 @@ class AppsController < ApplicationController
   # GET /apps
   # GET /apps.xml
   def index
-    @apps = App.all
+    @apps = App.find(:all, :conditions => ["is_published = ?", true])
+    @pending_apps = App.find(:all, :conditions => ["is_published = ?", false])
 
     respond_to do |wants|
       wants.html # index.html.erb
