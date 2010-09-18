@@ -4,7 +4,7 @@ class App < ActiveRecord::Base
 
   # Paperclip functionality
   has_attached_file :screenshot,
-                    :styles         => { :thumb => "250x250>" },
+                    :styles         => { :thumb => ["150x150>", :png] },
                     :storage        => :s3,
                     :path           => "#{ ENV['RAILS_ENV'] }/apps/:id/:style_:filename",
                     :bucket         => ENV['S3_BUCKET'],
@@ -21,5 +21,5 @@ class App < ActiveRecord::Base
   validates_attachment_content_type :screenshot, :content_type => [/^image\/.*$/], :message => 'is not an image'
   
   # Set attributes available for mass-assignment
-  attr_accessible :title, :description, :submitter_name, :submitter_email, :application_link, :author_link, :screenshot, :is_featured, :is_published
+  attr_accessible :title, :description, :submitter_name, :submitter_email, :application_link, :author_link, :screenshot, :dataset_ids, :is_featured, :is_published
 end

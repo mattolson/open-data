@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100913060655) do
+ActiveRecord::Schema.define(:version => 20100913064452) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20100913060655) do
     t.datetime "screenshot_updated_at"
   end
 
-  create_table "apps_datasets", :force => true do |t|
+  create_table "apps_datasets", :id => false, :force => true do |t|
     t.integer "dataset_id", :null => false
     t.integer "app_id",     :null => false
   end

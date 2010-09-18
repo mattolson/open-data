@@ -9,6 +9,7 @@
   <%= form.input :submitter_name, :label => 'Author name' %>
   <%= form.input :submitter_email, :label => 'Author email', :hint => 'Will not be published or shared' %>
   <%= form.input :author_link, :label => 'Author website', :required => false, :hint => 'If different from application site' %>
+  <%= form.input :datasets, :as => :check_boxes %>
   <%= form.input :screenshot %>
   <% if admin_signed_in? -%>
     <%= form.input :is_featured, :required => false, :label => 'Featured on home page' %>
