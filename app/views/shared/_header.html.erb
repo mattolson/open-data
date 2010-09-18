@@ -3,5 +3,8 @@
   <li><%= link_to 'Datasets', datasets_path %></li>
   <li><%= link_to 'Applications', apps_path %></li>
   <li><%= link_to 'News', press_items_path %></li>
+  <% if admin_signed_in? -%>
+    <li><%= link_to 'Logout', destroy_admin_session_path %></li>
+  <% end -%>
 </ul>
 <hr />

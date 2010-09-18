@@ -1,6 +1,6 @@
 class AppsController < ApplicationController
   before_filter :find_app, :only => [:show, :edit, :update, :destroy]
-  before_filter :authenticate_admin!, :except => [:index, :new]
+  before_filter :authenticate_admin!, :except => [:index, :new, :create]
 
   # GET /apps
   # GET /apps.xml
@@ -36,7 +36,7 @@ class AppsController < ApplicationController
     @app.save!
 
     respond_to do |wants|
-      flash[:notice] = 'App was successfully created.'
+      flash[:notice] = "Your application has been submitted. You will receive an email once we've taken a look. Thanks!"
       wants.html { redirect_to(apps_url) }
       wants.xml  { render :xml => @app, :status => :created, :location => @app }
     end
