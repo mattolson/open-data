@@ -1,4 +1,7 @@
 <% set_page_title 'Datasets' -%>
+<% content_for :domready do -%>
+  $("#nav_datasets_link").addClass("selected");
+<% end -%>
 
 <h1>Datasets<%= " in category '#{h(category_name(@category))}'" if @category %><%= " tagged '#{h(@tag.name)}'" if @tag %></h1>
 

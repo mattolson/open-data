@@ -1,4 +1,7 @@
 <% set_page_title 'Edit Application' -%>
+<% content_for :domready do -%>
+  $("#nav_apps_link").addClass("selected");
+<% end -%>
 
 <h1>Edit '<%=h @app.title %>'</h1>
 <% semantic_form_for @app, :url => app_path(@app), :method => :put, :html => {:multipart => true} do |form| %>

@@ -1,6 +1,6 @@
 <% set_page_title h(@dataset.title) -%>
-
 <% content_for :domready do -%>
+  $("#nav_datasets_link").addClass("selected");
   $("#dataset_downloads a").tooltip({ effect: 'slide'}).dynamic();
   $("#dataset_downloads a").click(function() {
     $.post('<%= count_download_dataset_path(@dataset) %>', function(data) {

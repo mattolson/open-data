@@ -37,18 +37,44 @@
   	//]]>
 	</script>
 <% end -%>
+<div id="header_container">
+  <div id="meta_header">
+    <ul class="inline">
+      <li><%= link_to 'About the Open Data Project', about_path %></li>
+      <li><%= link_to 'Open Data Project Participants', participants_path %></li>
+    </ul>
+    <h3><%= link_to 'Open Data Project', root_path %></h3>
+    <div class="clear"></div>
+  </div>
+</div>
+
 <div id="body_container">
-    <%= render :partial => '/shared/header' %>
+  <div id="header">
+    <ul class="inline nav">
+      <li><%= link_to 'Datasets', datasets_path, :id => 'nav_datasets_link' %></li>
+      <li><%= link_to 'Applications', apps_path, :id => 'nav_apps_link' %></li>
+      <li><%= link_to 'News', press_items_path, :id => 'nav_news_link' %></li>
+      <li><%= link_to 'Get Updates', '', :id => 'nav_updates_link' %></li>
+      <li><%= link_to 'Join Us', 'http://www.facebook.com', :id => 'nav_join_link' %></li>
+      <% if admin_signed_in? -%>
+        <li><%= link_to 'Logout', destroy_admin_session_path %></li>
+      <% end -%>
+    </ul>
+    <%= image_tag 'logo.png' %>
+  </div>
 
-    <div id="flashes" style="display:none;">
-    	<%= standard_flashes %>
-    </div>
+  <div id="flashes" style="display:none;">
+  	<%= standard_flashes %>
+  </div>
 
-    <div id="content" class="page_container">
-    	<%= yield %>
-    </div>
+  <div id="content" class="page_container">
+  	<%= yield %>
+  </div>
+</div>
 
-    <%= render :partial => '/shared/footer' %>
+<div id="footer_container">
+  <div id="footer">
+  </div>
 </div>
 </body>
 </html>

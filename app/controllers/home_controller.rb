@@ -10,4 +10,7 @@ class HomeController < ApplicationController
 
   def license
   end
+
+  def participants
+  end
 end

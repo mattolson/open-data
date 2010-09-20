@@ -1,4 +1,7 @@
 <% set_page_title 'Edit Dataset' -%>
+<% content_for :domready do -%>
+  $("#nav_datasets_link").addClass("selected");
+<% end -%>
 
 <h1>Edit '<%=h @dataset.title %>'</h1>
 <% semantic_form_for @dataset, :url => dataset_path(@dataset), :method => :put, :html => {:multipart => true, :id => 'dataset_form'} do |form| %>

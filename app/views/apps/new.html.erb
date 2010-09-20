@@ -1,4 +1,7 @@
 <% set_page_title 'Add Your App' -%>
+<% content_for :domready do -%>
+  $("#nav_apps_link").addClass("selected");
+<% end -%>
 
 <h1>Add Your App</h1>
 <% semantic_form_for @app, :url => apps_path, :html => {:multipart => true} do |form| %>

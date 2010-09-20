@@ -1,4 +1,7 @@
 <% set_page_title 'Applications' -%>
+<% content_for :domready do -%>
+  $("#nav_apps_link").addClass("selected");
+<% end -%>
 
 <% if admin_signed_in? and @pending_apps.size > 0 -%>
   <h1>Pending Applications</h1>

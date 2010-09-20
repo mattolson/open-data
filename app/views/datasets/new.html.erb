@@ -1,4 +1,7 @@
 <% set_page_title 'Add Dataset' -%>
+<% content_for :domready do -%>
+  $("#nav_datasets_link").addClass("selected");
+<% end -%>
 
 <h1>Add New Dataset</h1>
 <% semantic_form_for @dataset, :url => datasets_path, :html => {:multipart => true, :id => 'dataset_form'} do |form| %>
