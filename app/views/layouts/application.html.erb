@@ -19,6 +19,12 @@
   	//<![CDATA[
   	<%= yield :js %>
   	$(document).ready(function() {
+  	  $("#header ul.nav a").mouseover(function () {
+  	    $(this).addClass("button");
+  	  });
+  	  $("#header ul.nav a").mouseout(function () {
+  	    $(this).removeClass("button");
+  	  });
     	<%= yield :domready %>
   	});
   	//]]>
@@ -60,7 +66,7 @@
         <li><%= link_to 'Logout', destroy_admin_session_path %></li>
       <% end -%>
     </ul>
-    <%= image_tag 'logo.png' %>
+    <%= link_to image_tag('logo.png'), root_path, :class => 'clear' %>
   </div>
 
   <div id="flashes" style="display:none;">

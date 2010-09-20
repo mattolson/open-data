@@ -5,7 +5,7 @@ class Attachment < ActiveRecord::Base
   # Paperclip functionality
   has_attached_file :attachment,
                     :storage        => :s3,
-                    :path           => "#{ ENV['RAILS_ENV'] }/datasets/:id/:filename",
+                    :path           => "#{ ENV['RAILS_ENV'] }/datasets/attachments/:id/:filename",
                     :s3_headers     => {'Content-Disposition' => 'attachment'},
                     :bucket         => ENV['S3_BUCKET'],
                     :s3_credentials => { :access_key_id     => ENV['S3_KEY'],

@@ -41,6 +41,10 @@
     </div>
     <div class="clear"></div>
 
+    <%= form.input :screenshot %>
+    <% if form.object.screenshot_file_name -%>
+      <p class="standalone"><%= image_tag form.object.screenshot.url(:thumb) %></p>
+    <% end -%>
     <%= form.input :category, :as => :select, :collection => Configs.select_lists['dataset_categories'].list %>
     <%= form.input :tag_list, :as => :string, :label => 'Tags', :required => false, :hint => 'Try to reuse tags for maximum usability. Separate with comma or tab.' %>
     <%= form.input :standard_list, :as => :string, :label => 'Standards', :required => false %>

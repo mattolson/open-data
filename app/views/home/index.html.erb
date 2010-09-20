@@ -1,3 +1,47 @@
 <% set_page_title 'Home' -%>
 
-<h1>Home</h1>
+<div id="headline">
+  <p class="big">
+    Our <%= link_to 'data', datasets_path %> wants to be <%= link_to 'open', about_path %>.<br />
+    Use it to <%= link_to 'make', apps_path %> something.<br />
+    How about a web app,<br />
+    visualization, or case study?
+  </p>
+  <p><%= link_to 'Learn More &raquo;', about_path, :class => 'button' %></p>
+</div>
+
+<h2 class="section_head download"><%= link_to 'View all &raquo;', datasets_path, :class => 'view_all' %>Featured Datasets</h2>
+<% @datasets.each_with_index do |dataset,i| -%>
+  <div class="box three_col<%= i > 0 && i % 2 == 0 ? ' last' : '' %>">
+    <%= image_tag dataset.screenshot.url(:thumb), :class => 'thumb' %>
+    <h3><%= link_to h(dataset.title), dataset_path(dataset) %></h3>
+    <p>Tags: <%= dataset.tags.map {|tag| link_to h(tag), tagged_datasets_path(tag) }.join(', ') %></p>
+  </div>
+<% end -%>
+<div class="clear"></div>
+
+<h2 class="section_head pencil"><%= link_to 'View all &raquo;', apps_path, :class => 'view_all' %>Featured Applications</h2>
+<% @apps.each_with_index do |app,i| -%>
+  <div class="box three_col<%= i > 0 && i % 2 == 0 ? ' last' : '' %>">
+    <%= image_tag app.screenshot.url(:thumb), :class => 'thumb' %>
+    <h3><%= link_to h(app.title), dataset_path(app) %></h3>
+  </div>
+<% end -%>
+<div class="clear"></div>
+
+<h2 class="section_head info">Learn More</h2>
+<div class="box two_col">
+  <div class="contents">
+    <h3>Corporate Responsibility Report</h3>
+    <p>We take corporate social responsibility seriously.</p>
+    <p><%= link_to 'Read our report &raquo;', 'http://www.seventhgeneration.com/corporate-responsibility/2008' %>
+  </div>
+</div>
+<div class="box two_col last">
+  <div class="contents">
+    <h3>Visit Seventh Generation</h3>
+    <p>There's much more to learn on our site. Stop by anytime!</p>
+    <p><%= link_to 'Visit our site &raquo;', 'http://www.seventhgeneration.com/seventh-generation-mission' %>
+  </div>
+</div>
+<div class="clear"></div>
