@@ -80,6 +80,39 @@
 
 <div id="footer_container">
   <div id="footer">
+    <div class="block">
+      <h3>About the Open Data Project</h3>
+      <p>Help us build more environment- ally and socially sustainable businesses based on open approaches to information.</p>
+      <p><%= link_to 'Learn more &raquo;', about_path %></p>
+    </div>
+    <div class="block">
+      <h3>Latest News</h3>
+      <ul>
+        <% @press_items.each do |press| -%>
+          <li><%= link_to h(press.title), press_item_path(press) %></li>
+        <% end -%>
+      </ul>
+      <p><%= link_to 'View All &raquo;', press_items_path %></p>
+    </div>
+    <div class="block">
+      <h3>Contact Us</h3>
+      <p>
+        Chris Miller<br />
+        Seventh Generation<br />
+        Corporate Consciousness<br />
+        (000) 000-0000
+      </p>
+      <p><%= link_to 'Email Me &raquo;', contact_path %></p>
+    </div>
+    <div class="block last">
+      <h3>Steal This Site!</h3>
+      <p>
+        The <%= link_to 'datasets', datasets_path %> on this site, as well as the <%= link_to 'source code', 'http://github.com/mattolson/open-data' %>
+        for the site available to you free of charge under an <%= link_to 'open source license', license_path %>. Fork us on GitHub and publish your own data!
+      </p>
+      <p><%= link_to 'Download Source Code &raquo;', 'http://github.com/mattolson/open-data' %></p>
+    </div>
+    <div class="clear"></div>
   </div>
 </div>
 </body>

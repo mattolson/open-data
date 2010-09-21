@@ -1,7 +1,7 @@
 * { margin: 0; padding: 0; }
 
 /* Begin YUI font reset */
-body { font: 13px/1.231 arial,verdana,helvetica,clean,sans-serif; *font-size:small; *font:x-small; }
+body { background-color: #423f30; font: 13px/1.231 arial,verdana,helvetica,clean,sans-serif; *font-size:small; *font:x-small; }
 table { font-size: inherit; font: 100%; }
 pre, code, kbd, samp, tt { font-family: monospace; *font-size: 108%; line-height: 100%; }
 /* End YUI font reset */
@@ -55,9 +55,11 @@ div.box div.contents { padding: 0 1.5em 1.5em 1.5em; }
 /* Page structure */
 #header_container, #footer_container { background-color: #423f30; color: #c6c5c1; }
 #header_container h1, #footer_container h1, #header_container h2, #footer_container h2 { color: #fff; }
-#body_container { background: #ececea url(/images/bg.png) 50% 0 no-repeat; min-height: 600px; }
-#flashes, #content { width: 840px; margin: 0 auto; }
+#body_container { background: #ececea url(/images/bg.png) 50% 0 no-repeat; min-height: 600px; padding-bottom: 3em; }
+#flashes, #content, #footer { width: 840px; margin: 0 auto; }
 #content { padding-bottom: 2em; clear: both; }
+
+/* Header */
 #meta_header, #header { width: 965px; margin: 0 auto; }
 #meta_header h3 { background: url(/images/icons/open_data.png) 0 50% no-repeat; margin: 0; padding: 10px 0 10px 35px; width: 150px; }
 #meta_header h3 a { color: #fff; }
@@ -69,6 +71,12 @@ div.box div.contents { padding: 0 1.5em 1.5em 1.5em; }
 #header ul.nav { float: right; }
 #header ul.nav li a { display: block; font-size: 14px; font-weight: bold; margin-top: 19px; padding: 7px; height: 14px; }
 #header ul.nav li a:link, #header ul.nav li a:visited { color: #423f30; text-decoration: none; }
+
+/* Footer */
+#footer { padding: 2em 0; }
+#footer div.block { float: left; width: 191px; margin-right: 25px; }
+#footer div.block.last { margin-right: 0; }
+#footer h3 { font-size: 13px; color: #fff; border-top: 2px solid #57652a; margin-top: 0; padding-top: 0.5em; }
 
 /* Tooltips */
 .tooltip { display: none; background: transparent url(/images/black_arrow.png) no-repeat; font-size: 12px; height: 70px; width: 160px; padding: 25px; color: #fff; }

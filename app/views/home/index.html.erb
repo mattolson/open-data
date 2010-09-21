@@ -13,7 +13,7 @@
 <h2 class="section_head download"><%= link_to 'View all &raquo;', datasets_path, :class => 'view_all' %>Featured Datasets</h2>
 <% @datasets.each_with_index do |dataset,i| -%>
   <div class="box three_col<%= i > 0 && i % 2 == 0 ? ' last' : '' %>">
-    <%= image_tag dataset.screenshot.url(:thumb), :class => 'thumb' %>
+    <%= link_to image_tag(dataset.screenshot.url(:thumb), :class => 'thumb'), dataset_path(dataset), :class => "clear" %>
     <h3><%= link_to h(dataset.title), dataset_path(dataset) %></h3>
     <p>Tags: <%= dataset.tags.map {|tag| link_to h(tag), tagged_datasets_path(tag) }.join(', ') %></p>
   </div>
@@ -23,8 +23,8 @@
 <h2 class="section_head pencil"><%= link_to 'View all &raquo;', apps_path, :class => 'view_all' %>Featured Applications</h2>
 <% @apps.each_with_index do |app,i| -%>
   <div class="box three_col<%= i > 0 && i % 2 == 0 ? ' last' : '' %>">
-    <%= image_tag app.screenshot.url(:thumb), :class => 'thumb' %>
-    <h3><%= link_to h(app.title), dataset_path(app) %></h3>
+    <%= link_to image_tag(app.screenshot.url(:thumb), :class => 'thumb'), app.application_link, :target => :_blank, :class => "clear" %>
+    <h3><%= link_to h(app.title), app.application_link, :target => :_blank %></h3>
   </div>
 <% end -%>
 <div class="clear"></div>

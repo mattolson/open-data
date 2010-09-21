@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   helper_method :controller_name, :page_title, :set_page_title, :add_css_include, :extra_css_includes, :add_js_include, :extra_js_includes, :user_agent
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  before_filter :lookup_news
 
   # Set page title
   def set_page_title(title)
@@ -43,6 +44,10 @@ class ApplicationController < ActionController::Base
   end
   
   protected
+    def lookup_news
+      @press_items = PressItem.find(:all, :order => 'created_at desc', :limit => 3)
+    end
+    
     # Override default rescue
     alias :orig_rescue_action_in_public :rescue_action_in_public
     def rescue_action_in_public(exception)
