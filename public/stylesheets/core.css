@@ -77,6 +77,9 @@ div.box div.contents { padding: 0 1.5em 1.5em 1.5em; }
 #footer div.block { float: left; width: 191px; margin-right: 25px; }
 #footer div.block.last { margin-right: 0; }
 #footer h3 { font-size: 13px; color: #fff; border-top: 2px solid #57652a; margin-top: 0; padding-top: 0.5em; }
+#partners h3 { font-size: 11px; margin-top: 2em; }
+#partners ul.inline { float: right; }
+#partners ul.inline li { margin-right: 20px; }
 
 /* Tooltips */
 .tooltip { display: none; background: transparent url(/images/black_arrow.png) no-repeat; font-size: 12px; height: 70px; width: 160px; padding: 25px; color: #fff; }
