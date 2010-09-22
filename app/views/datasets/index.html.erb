@@ -3,14 +3,61 @@
   $("#nav_datasets_link").addClass("selected");
 <% end -%>
 
-<h1>Datasets<%= " in category '#{h(category_name(@category))}'" if @category %><%= " tagged '#{h(@tag.name)}'" if @tag %></h1>
-
-<ul>
-  <% @datasets.each do |dataset| -%>
-    <li><%= link_to h(dataset.title), dataset %></li>
+<div id="sidebar">
+  <%= render :partial => 'sidebar', :locals => {:category => @category, :tags => (@tag ? [@tag.id] : [])} %>
+  <% if admin_signed_in? -%>
+    <h2 class="section_head pencil">Admin</h2>
+    <p><%= link_to 'Add New Dataset', new_dataset_path %></p>
   <% end -%>
-</ul>
+</div>
 
-<% if admin_signed_in? -%>
-  <p><%= link_to 'Add New Dataset', new_dataset_path %></p>
-<% end -%>
+<div id="primary">
+  <h2 class="section_head download">
+  <% if @category -%>
+    Datasets in category '<%=h category_name(@category) %>'
+  <% elsif @tag -%>
+    Datasets tagged '<%=h @tag.name %>'
+  <% else -%>
+    All Datasets
+  <% end -%>
+  </h2>
+
+  <div id="dataset_list">
+    <% @datasets.each do |dataset| -%>
+      <div class="box_header">
+        <h2><%= link_to 'Details &raquo;', dataset %><%=h dataset.title %></h2>
+      </div>
+      <div class="box">
+        <%= link_to image_tag(dataset.screenshot.url(:thumb), :class => 'thumb'), dataset, :class => 'clear' %>
+        <ul class="datasetlist_stats inline">
+          <li class="first">
+            <h5>CATEGORY</h5>
+            <%=h category_name(dataset.category) %>
+          </li>
+          <li>
+            <h5>UPDATED</h5>
+            <%= format_date(dataset.last_uploaded_at) %>
+          </li>
+          <li>
+            <h5>COMMENTS</h5>
+            <%= 0 %>
+          </li>
+          <li>
+            <h5>DOWNLOADS</h5>
+            <%= dataset.download_count %>
+          </li>
+        </ul>
+        <div class="description">
+          <%=h truncate(dataset.description, :length => 160) %>
+        </div>
+        <div class="clear_left"></div>
+      </div>
+    <% end -%>
+    <% if @datasets.size == 0 -%>
+      <p>Nothing found matching your criteria.</p>
+    <% end -%>
+  </div>
+
+  <%= render :partial => '/shared/learn_more', :locals => {:columns => 'dataset'} %>
+  <div class="clear_left"></div>
+</div>

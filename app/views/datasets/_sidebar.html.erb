@@ -1,0 +1,14 @@
+<h2 class="section_head folder">Categories</h2>
+<ul>
+  <% Configs.select_lists['dataset_categories'].values.each do |key, value| -%>
+    <li<%= key == category ? ' class="selected"' : '' %>><%= link_to h(value), dataset_category_path(key) %></li>
+  <% end -%>
+</ul>
+<h2 class="section_head tag">Tags</h2>
+<ul>
+  <% Dataset.tag_counts_on(:tags).each do |tag| -%>
+    <% if tag.count > 0 -%>
+      <li<%= tags.member?(tag.id) ? ' class="selected"' : '' %>><%= link_to h(tag.name), tagged_datasets_path(tag.slug) %></li>
+    <% end -%>
+  <% end -%>
+</ul>

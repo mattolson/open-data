@@ -10,20 +10,7 @@
 <% end -%>
 
 <div id="sidebar">
-  <h2 class="section_head folder">Categories</h2>
-  <ul>
-    <% Configs.select_lists['dataset_categories'].values.each do |key, value| -%>
-      <li<%= key == @dataset.category ? ' class="selected"' : '' %>><%= link_to h(value), dataset_category_path(key) %></li>
-    <% end -%>
-  </ul>
-  <h2 class="section_head tag">Tags</h2>
-  <ul>
-    <% Dataset.tag_counts_on(:tags).each do |tag| -%>
-      <% if tag.count > 0 -%>
-        <li<%= @tags.member?(tag.id) ? ' class="selected"' : '' %>><%= link_to h(tag.name), tagged_datasets_path(tag.slug) %></li>
-      <% end -%>
-    <% end -%>
-  </ul>
+  <%= render :partial => 'sidebar', :locals => {:category => @dataset.category, :tags => @tags} %>
   <% if admin_signed_in? -%>
     <h2 class="section_head pencil">Admin</h2>
     <p><%= link_to 'Edit Dataset', edit_dataset_path(@dataset) %></p>
@@ -69,6 +56,7 @@
       <%= image_tag @dataset.screenshot.url(:thumb) %>
       <%=h @dataset.description %>
     </div>
+    <div class="clear_left"></div>
   </div>
 
   <% unless @dataset.category.blank? and @dataset.tag_list.blank? -%>
@@ -127,7 +115,11 @@
     <% end -%>
     <div class="clear_left"></div>
   <% else -%>
-    <p>None yet. Have one? <%= link_to 'Let us know.', new_app_path %></p>
+    <div class="box">
+      <div class="contents">
+        <p>None yet. Have one? <%= link_to 'Let us know.', new_app_path %></p>
+      </div>
+    </div>
   <% end -%>
 
   <h2 class="section_head comment">Discussion &amp; Suggestions</h2>

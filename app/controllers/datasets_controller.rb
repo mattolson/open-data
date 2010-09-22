@@ -5,7 +5,7 @@ class DatasetsController < ApplicationController
   # GET /datasets
   # GET /datasets.xml
   def index
-    @datasets = Dataset.all
+    @datasets = Dataset.find(:all, :order => 'is_featured desc, last_uploaded_at desc')
 
     respond_to do |wants|
       wants.html # index.html.erb

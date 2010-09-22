@@ -33,7 +33,6 @@ ActionController::Routing::Routes.draw do |map|
   
   # Static pages
   map.about 'about', :controller => 'home', :action => 'about'
-  map.participants 'participants', :controller => 'home', :action => 'participants'
   map.contact 'contact', :controller => 'home', :action => 'contact'
   map.license 'license', :controller => 'home', :action => 'license'
   
