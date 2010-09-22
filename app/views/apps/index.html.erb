@@ -3,32 +3,33 @@
   $("#nav_apps_link").addClass("selected");
 <% end -%>
 
-<% if admin_signed_in? and @pending_apps.size > 0 -%>
-  <h1>Pending Applications</h1>
-  <ul>
-    <% @pending_apps.each do |app| -%>
-      <li>
-        <%= image_tag app.screenshot.url(:thumb) %>
-        <%= link_to h(app.title), app.application_link, :target => :_blank %>
-        <%= link_to 'Edit', edit_app_path(app) %>
-        <%= link_to 'Delete', app_path(app), :method => :delete, :confirm => 'This will permanently delete the application listing from the site. Are you sure?' %>
-      </li>
-    <% end -%>
-  </ul>
-<% end -%>
+<div id="sidebar">
+  <h2 class="section_head comment">Share</h2>
+  <div class="box">
+    <div class="contents">
+      <h3><%= link_to 'Have an app to share?', new_app_path %></h3>
+      <p>Have you built something with one of our datasets?</p>
+      <p><%= link_to 'Let us know!', new_app_path %> and we'll publish a link on our site.</p>
+    </div>
+  </div>
+</div>
 
-<h1>Applications</h1>
-<ul>
-  <% @apps.each do |app| -%>
-    <li>
-      <%= image_tag app.screenshot.url(:thumb) %>
-      <%= link_to h(app.title), app.application_link, :target => :_blank %>
-      <% if admin_signed_in? -%>
-        <%= link_to 'Edit', edit_app_path(app) %>
-        <%= link_to 'Delete', app_path(app), :method => :delete, :confirm => 'This will permanently delete the application listing from the site. Are you sure?' %>
-      <% end -%>
-    </li>
+<div id="primary">
+  <% if admin_signed_in? && @pending_apps.size > 0 -%>
+    <h2 class="section_head pencil">Pending Applications</h2>
+    <div class="dataset_list">
+      <%= render :partial => 'list', :locals => {:apps => @pending_apps } %>
+    </div>
   <% end -%>
-</ul>
 
-<p><%= link_to 'Add Your Application', new_app_path %></p>
+  <h2 class="section_head pencil">Applications</h2>
+  <div class="dataset_list">
+    <%= render :partial => 'list', :locals => {:apps => @apps } %>
+    <% if @apps.size == 0 -%>
+      <p>Nothing yet, check back soon...</p>
+    <% end -%>
+  </div>
+
+  <%= render :partial => '/shared/learn_more', :locals => {:columns => 'dataset'} %>
+  <div class="clear_left"></div>
+</div>

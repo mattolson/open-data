@@ -131,15 +131,17 @@ a.download_button:hover, a.download_button:active { background: #7BA523 -webkit-
 div.dataset_two_col { float: left; width: 305px; margin-right: 10px; }
 div.dataset_two_col.last { margin-right: 0px; }
 
-/* Dataset list */
-#dataset_list div.box_header { margin-top: 20px; }
-#dataset_list div.box_header:first-child { margin-top: 0; }
-#dataset_list div.box_header h2 a { float: right; font-size: 12px; padding-top: 2px; }
-#dataset_list div.box img.thumb { margin-right: 0; }
-#dataset_list div.description, ul.datasetlist_stats { margin: 0 0 0 100px; }
-#dataset_list div.description { padding: 15px 20px; border-left: 1px solid #e8e8e6; }
-ul.datasetlist_stats { padding: 0; }
-ul.datasetlist_stats li { padding: 15px 20px; margin: 0 0 15px 0; border-left: 1px solid #e8e8e6; border-bottom: 1px solid #e8e8e6; font-size: 12px; width: 75px; }
+/* Lists */
+div.dataset_list div.box_header { margin-top: 20px; }
+div.dataset_list div.box_header:first-child { margin-top: 0; }
+div.dataset_list div.box_header h2 a { float: right; font-size: 12px; padding-top: 2px; }
+div.dataset_list div.box img.thumb { margin-right: 0; }
+div.dataset_list div.description, ul.datasetlist_stats, ul.applist_stats { margin: 0 0 0 100px; }
+div.dataset_list div.description { padding: 15px 20px; border-left: 1px solid #e8e8e6; }
+ul.datasetlist_stats, ul.applist_stats { padding: 0; }
+ul.datasetlist_stats li, ul.applist_stats li { padding: 15px 20px; margin: 0 0 15px 0; border-left: 1px solid #e8e8e6; border-bottom: 1px solid #e8e8e6; font-size: 12px; width: 75px; }
 ul.datasetlist_stats li.first { width: 130px; }
-ul.datasetlist_stats li h5 { font-size: 10px; margin-top: 0; }
+ul.applist_stats li { width: 327px; }
+ul.applist_stats li.first { width: 110px; }
+ul.datasetlist_stats li h5, ul.applist_stats li h5 { font-size: 10px; margin-top: 0; }
 #suggestions { margin-top: 35px; }

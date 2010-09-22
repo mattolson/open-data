@@ -1,0 +1,27 @@
+<% apps.each do |app| -%>
+  <div class="box_header">
+    <h2><%= link_to 'Visit Site &raquo;', app.application_link, :target => '_blank' %><%=h app.title %></h2>
+  </div>
+  <div class="box">
+    <%= link_to image_tag(app.screenshot.url(:thumb), :class => 'thumb'), app.application_link, :target => '_blank', :class => 'clear' %>
+    <ul class="applist_stats inline">
+      <li class="first">
+        <h5>AUTHOR</h5>
+        <%= app.author_link.blank? ? h(app.submitter_name) : link_to(h(app.submitter_name), app.author_link, :target => '_blank') %>
+      </li>
+      <li>
+        <h5>DATASETS USED</h5>
+        <%= app.datasets.map { |dataset| link_to(h(dataset.title), dataset_path(dataset)) }.join(', ') %>
+      </li>
+    </ul>
+    <div class="description">
+      <%=h app.description %>
+      <% if admin_signed_in? -%>
+        <h2 class="section_head pencil">Admin</h2>
+        <p><%= link_to 'Edit App', edit_app_path(app) %></p>
+        <p><%= link_to 'Delete App', app_path(app), :method => :delete, :confirm => 'This will permanently delete the application listing from the site. Are you sure?' %></p>
+      <% end -%>
+    </div>
+    <div class="clear_left"></div>
+  </div>
+<% end -%>

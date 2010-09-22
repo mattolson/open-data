@@ -109,7 +109,7 @@
         <%= link_to image_tag(app.screenshot.url(:thumb), :class => 'thumb'), app.application_link, :class => "clear", :target => "_blank" %>
         <div class="contents">
           <h3><%= link_to h(app.title), app.application_link, :target => "_blank" %></h3>
-          <p>by <%= app.author_link.blank? ? h(app.submitter_name) : link_to(h(app.submitter_name), app.author_link) %></p>
+          <p>by <%= app.author_link.blank? ? h(app.submitter_name) : link_to(h(app.submitter_name), app.author_link, :target => '_blank') %></p>
         </div>
       </div>
     <% end -%>
