@@ -65,11 +65,12 @@ div.box_header h2 { color: #fff; font-size: 15px; margin-top: 0; }
 #sidebar { float: right; width: 195px; margin-left: 25px; }
 #sidebar h2 { border-bottom: 1px solid #dbe4c9; padding-bottom: 7px; margin-bottom: 0; }
 #sidebar h2:first-child { margin-top: 0; }
-#sidebar ul { margin-bottom: 3em; list-style: none; font-weight: bold; }
+#sidebar ul { margin-bottom: 3em; list-style: none; }
 #sidebar ul li { border-bottom: 1px solid #dbe4c9; padding: 10px 0; }
 #sidebar ul li a:link, #sidebar ul li a:visited { color: #423f30; text-decoration: none; }
-#sidebar ul li a:hover, #sidebar ul li a:active { color: #79a31f; text-decoration: underline; }
-#sidebar ul li.selected a:link, #sidebar ul li.selected a:visited { color: #79a31f; }
+#sidebar ul li a:hover, #sidebar ul li a:active { color: #79a31f; text-decoration: none; }
+#sidebar ul li.selected a:link, #sidebar ul li.selected a:visited { color: #423f30; font-weight: bold; }
+#sidebar ul li.selected a:hover, #sidebar ul li.selected a:active { color: #79a31f; font-weight: bold; }
 
 /* Header */
 #meta_header, #header { width: 965px; margin: 0 auto; }
@@ -141,3 +142,4 @@ ul.datasetlist_stats { padding: 0; }
 ul.datasetlist_stats li { padding: 15px 20px; margin: 0 0 15px 0; border-left: 1px solid #e8e8e6; border-bottom: 1px solid #e8e8e6; font-size: 12px; width: 75px; }
 ul.datasetlist_stats li.first { width: 130px; }
 ul.datasetlist_stats li h5 { font-size: 10px; margin-top: 0; }
+#suggestions { margin-top: 35px; }
