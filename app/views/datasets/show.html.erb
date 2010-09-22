@@ -9,69 +9,132 @@
   });
 <% end -%>
 
-<h1 class="section_head">Selected Dataset</h1>
-<h1 id="dataset_title"><%=h @dataset.title %></h1>
-<h2 id="dataset_date_range"><%= format_timerange(@dataset.start_date, @dataset.end_date) %></h2>
-
-<dl id="dataset_stats">
-  <dt>RELEASED</dt>
-  <dd><%= format_date(@dataset.created_at) %></dd>
-  <dt>UPDATED</dt>
-  <dd><%= format_date(@dataset.last_uploaded_at) %></dd>
-  <% unless @dataset.standard_list.empty? -%>
-    <dt>STANDARDS</dt>
-    <dd><%=h @dataset.standard_list %></dd>
+<div id="sidebar">
+  <h2 class="section_head folder">Categories</h2>
+  <ul>
+    <% Configs.select_lists['dataset_categories'].values.each do |key, value| -%>
+      <li<%= key == @dataset.category ? ' class="selected"' : '' %>><%= link_to h(value), dataset_category_path(key) %></li>
+    <% end -%>
+  </ul>
+  <h2 class="section_head tag">Tags</h2>
+  <ul>
+    <% Dataset.tag_counts_on(:tags).each do |tag| -%>
+      <% if tag.count > 0 -%>
+        <li<%= @tags.member?(tag.id) ? ' class="selected"' : '' %>><%= link_to h(tag.name), tagged_datasets_path(tag.slug) %></li>
+      <% end -%>
+    <% end -%>
+  </ul>
+  <% if admin_signed_in? -%>
+    <h2 class="section_head pencil">Admin</h2>
+    <p><%= link_to 'Edit Dataset', edit_dataset_path(@dataset) %></p>
+    <p><%= link_to 'Delete Dataset', dataset_path(@dataset), :method => :delete, :confirm => 'This will permanently destroy the dataset and its associated files. Are you sure?' %></p>
   <% end -%>
-  <% unless @dataset.certification_list.empty? -%>
-    <dt>CERTIFIED BY</dt>
-    <dd><%=h @dataset.certification_list %></dd>
-  <% end -%>
-</dl>
-
-<div id="dataset_description">
-  <%=h @dataset.description %>
 </div>
 
-<% unless @dataset.category.blank? and @dataset.tag_list.blank? -%>
-<dl id="dataset_taxonomy">
-  <% unless @dataset.category.blank? -%>
-    <dt>CATEGORY</dt>
-    <dd><%= link_to(h(category_name(@dataset.category)), dataset_category_path(@dataset.category)) %></dd>
-  <% end -%>
-  <% unless @dataset.tag_list.blank? -%>
-    <dt>TAGS</dt>
-    <dd><%= @dataset.tags.map { |tag| link_to(h(tag.name), tagged_datasets_path(tag.slug)) }.join(',') %></dd>
-  <% end -%>
-</dl>
-<% end -%>
+<div id="primary">
+  <h2 class="section_head download">Selected Dataset</h2>
+  <div class="box_header">
+    <h2 id="dataset_name"><%=h @dataset.title %></h2>
+    <h2 id="dataset_date_range"><%= format_timerange(@dataset.start_date, @dataset.end_date) %></h2>
+  </div>
 
-<h1 class="section_head"><span id="download_counter"><span id="download_count"><%= @dataset.download_count %></span> Downloads</span>Download This Data</h1>
-<ul id="dataset_downloads">
-  <% @dataset.attachments.each do |a| -%>
-    <li class="button">
-      <%= link_to(file_extension(a.attachment_file_name).upcase, a.attachment.url) %>
-      <div class="tooltip">
-        <dl class="inline">
-          <dt>File:</dt>
-          <dd><%=h a.attachment_file_name %></dd>
-          <dt>Date:</dt>
-          <dd><%= format_date(a.attachment_updated_at) %></dd>
-          <dt>Size:</dt>
-          <dd><%= number_to_human_size(a.attachment_file_size) %></dd>
-        </dl>
+  <div class="box">
+    <ul class="dataset_stats inline">
+      <li>
+        <h5>RELEASED</h5>
+        <%= format_date(@dataset.created_at) %>
+      </li>
+      <li>
+        <h5>UPDATED</h5>
+        <%= format_date(@dataset.last_uploaded_at) %>
+      </li>
+      <% unless @dataset.standard_list.empty? -%>
+        <li>
+          <h5>STANDARDS</h5>
+          <%=h @dataset.standard_list %>
+        </li>
+      <% end -%>
+      <% unless @dataset.certification_list.empty? -%>
+        <li class="last">
+          <h5>CERTIFIED BY</h5>
+          <%=h @dataset.certification_list %>
+        </li>
+      <% end -%>
+    </ul>
+    <div class="clear_left"></div>
+  </div>
+
+  <div class="box">
+    <div id="dataset_desc">
+      <%= image_tag @dataset.screenshot.url(:thumb) %>
+      <%=h @dataset.description %>
+    </div>
+  </div>
+
+  <% unless @dataset.category.blank? and @dataset.tag_list.blank? -%>
+    <div class="box">
+      <ul class="dataset_stats inline" id="dataset_taxonomy">
+        <% unless @dataset.category.blank? -%>
+          <li>
+            <h5>CATEGORY</h5>
+            <%= link_to(h(category_name(@dataset.category)), dataset_category_path(@dataset.category)) %>
+          </li>
+        <% end -%>
+        <% unless @dataset.tag_list.blank? -%>
+          <li class="last">
+            <h5>TAGS</h5>
+            <%= @dataset.tags.map { |tag| link_to(h(tag.name), tagged_datasets_path(tag.slug)) }.join(', ') %>
+          </li>
+        <% end -%>
+      </ul>
+      <div class="clear_left"></div>
+    </div>
+  <% end -%>
+
+  <div id="dataset_downloads" class="box">
+    <h2 class="section_head download"><span id="download_counter"><span id="download_count"><%= @dataset.download_count %></span> downloads</span>Download This Data</h2>
+    <ul class="inline">
+      <% @dataset.attachments.each do |a| -%>
+        <li>
+          <%= link_to file_extension(a.attachment_file_name).upcase, a.attachment.url, :class => 'download_button' %>
+          <div class="tooltip">
+            <dl class="inline">
+              <dt>File:</dt>
+              <dd><%=h a.attachment_file_name %></dd>
+              <dt>Date:</dt>
+              <dd><%= format_date(a.attachment_updated_at) %></dd>
+              <dt>Size:</dt>
+              <dd><%= number_to_human_size(a.attachment_file_size) %></dd>
+            </dl>
+          </div>
+        </li>
+      <% end -%>
+    </ul>
+    <div class="clear_left"></div>
+    <p>This data is available free of charge under an <%= link_to 'open source license', license_path %>.</p>
+  </div>
+
+  <h2 class="section_head pencil"><%= link_to 'Submit your application of this data &raquo;', new_app_path, :id => 'new_app_link' %>Applications Of This Data</h2>
+  <% if @dataset.apps.size > 0 -%>
+    <% @dataset.apps.each_with_index do |app,i| -%>
+      <div class="box dataset_two_col<%= i > 0 && ((i+1) % 2) == 0 ? ' last' : '' %>">
+        <%= link_to image_tag(app.screenshot.url(:thumb), :class => 'thumb'), app.application_link, :class => "clear", :target => "_blank" %>
+        <div class="contents">
+          <h3><%= link_to h(app.title), app.application_link, :target => "_blank" %></h3>
+          <p>by <%= app.author_link.blank? ? h(app.submitter_name) : link_to(h(app.submitter_name), app.author_link) %></p>
+        </div>
       </div>
-    </li>
+    <% end -%>
+    <div class="clear_left"></div>
+  <% else -%>
+    <p>None yet. Have one? <%= link_to 'Let us know.', new_app_path %></p>
   <% end -%>
-</ul>
-<p>This data is available free of charge under an <%= link_to 'open source license', license_path %>.</p>
 
-<h1 class="section_head">Applications Of This Data</h1>
+  <h2 class="section_head comment">Discussion &amp; Suggestions</h2>
+  <div class="box">
+    <div class="contents">
+      <%= render :partial => '/shared/disqus', :locals => {:page_id => "#{dataset_path(@dataset)}"} %>
+    </div>
+  </div>
 
-<h1 class="section_head">Discussion &amp; Suggestions</h1>
-<%= render :partial => '/shared/disqus', :locals => {:page_id => "#{dataset_path(@dataset)}"} %>
-
-<% if admin_signed_in? -%>
-  <%= link_to 'Edit', edit_dataset_path(@dataset) %><br />
-  <%= link_to 'Delete', dataset_path(@dataset), :method => :delete, :confirm => 'This will permanently destroy the dataset and its associated files. Are you sure?' %><br />
-<% end -%>
-<%= link_to '&laquo; Back to datasets', datasets_path %>
+</div>

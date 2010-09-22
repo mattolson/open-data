@@ -126,7 +126,7 @@ module ApplicationHelper
   
   def format_timerange(d1, d2)
     if d1 and d2
-      "#{format_date(d1)} through #{format_date(d2)}"
+      "#{format_date(d1)} #{image_tag 'icons/separator.png' } #{format_date(d2)}"
     elsif d1
       "Starting #{format_date(d1)}"
     elsif d2

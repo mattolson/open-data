@@ -13,6 +13,7 @@ a:hover, a:active { text-decoration: underline; }
 a.clear:link, a.clear:visited, a.clear:hover, a.clear:active { text-decoration: none; }
 ul.as-selections a:link, ul.as-selections a:visited, ul.as-selections a:hover, ul.as-selections a:active { text-decoration: none; }
 div.clear { clear: both; }
+div.clear_left { clear: left; }
 ul, ol { list-style-position: inside; }
 hr { margin: 1em 0; height: 1px; border-top: 1px solid #d9d9d9; }
 p { margin-top: 0.7em; }
@@ -43,14 +44,15 @@ h2.section_head { font-size: 15px; padding-left: 23px; margin-top: 1.5em; margin
 h2.section_head.download { background-image: url(/images/icons/download.png); }
 h2.section_head.pencil { background-image: url(/images/icons/pencil.png); }
 h2.section_head.info { background-image: url(/images/icons/info.png); }
+h2.section_head.comment { background-image: url(/images/icons/comment.png); }
+h2.section_head.folder { background-image: url(/images/icons/folder.png); }
+h2.section_head.tag { background-image: url(/images/icons/tag.png); }
 a.view_all { float: right; font-size: 12px; }
 div.box { background: #f4f5f4 -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fafafa), to(#eeefef)); background: #f4f5f4 -moz-linear-gradient(center top, rgb(250,250,250), rgb(238,239,239)); -webkit-box-shadow: 1px 1px 0px #dddddb; -moz-box-shadow: 1px 1px 0px #dddddb; }
-div.two_col { float: left; width: 410px; margin-right: 8px; }
-div.three_col { float: left; width: 275px; margin-right: 4px; }
-div.two_col.last { width: 418px; margin-right: 0px; }
-div.three_col.last { width: 279px; margin-right: 0px; }
 div.box img.thumb { float: left; border-right: 1px solid #ececea; margin-right: 1em; }
 div.box div.contents { padding: 0 1.5em 1.5em 1.5em; }
+div.box_header { padding: 20px; background: #474436 -webkit-gradient(linear, 0% 0%, 0% 100%, from(#595649), to(#423f30)); background: #474436 -moz-linear-gradient(center top, rgb(89,86,73), rgb(66,63,48)); border-radius: 4px 4px 0 0; -moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; }
+div.box_header h2 { color: #fff; font-size: 15px; }
 
 /* Page structure */
 #header_container, #footer_container { background-color: #423f30; color: #c6c5c1; }
@@ -58,6 +60,14 @@ div.box div.contents { padding: 0 1.5em 1.5em 1.5em; }
 #body_container { background: #ececea url(/images/bg.png) 50% 0 no-repeat; min-height: 600px; padding-bottom: 3em; }
 #flashes, #content, #footer { width: 840px; margin: 0 auto; }
 #content { padding-bottom: 2em; clear: both; }
+#primary { width: 620px; }
+#sidebar { float: right; width: 195px; margin-left: 25px; }
+#sidebar h2 { border-bottom: 1px solid #dbe4c9; padding-bottom: 7px; margin-bottom: 0; }
+#sidebar ul { margin-bottom: 3em; list-style: none; font-weight: bold; }
+#sidebar ul li { border-bottom: 1px solid #dbe4c9; padding: 10px 0; }
+#sidebar ul li a:link, #sidebar ul li a:visited { color: #423f30; text-decoration: none; }
+#sidebar ul li a:hover, #sidebar ul li a:active { color: #79a31f; text-decoration: underline; }
+#sidebar ul li.selected a:link, #sidebar ul li.selected a:visited { color: #79a31f; }
 
 /* Header */
 #meta_header, #header { width: 965px; margin: 0 auto; }
@@ -74,10 +84,10 @@ div.box div.contents { padding: 0 1.5em 1.5em 1.5em; }
 
 /* Footer */
 #footer { padding: 2em 0; }
-#footer div.block { float: left; width: 191px; margin-right: 25px; }
+#footer div.block { float: left; width: 191px; margin-right: 25px; color: #a5a39d; }
 #footer div.block.last { margin-right: 0; }
-#footer h3 { font-size: 13px; color: #fff; border-top: 2px solid #57652a; margin-top: 0; padding-top: 0.5em; }
-#partners h3 { font-size: 11px; margin-top: 2em; }
+#footer h3 { font-size: 13px; color: #fff; border-top: 2px solid #57652a; margin-top: 0; padding-top: 0.7em; }
+#partners h3 { font-size: 9px; margin-top: 2em; font-weight: normal; }
 #partners ul.inline { float: right; }
 #partners ul.inline li { margin-right: 20px; }
 
@@ -88,9 +98,32 @@ div.box div.contents { padding: 0 1.5em 1.5em 1.5em; }
 /* Home */
 #headline { margin-bottom: 3em; }
 #headline p.big { font-size: 50px; font-weight: bold; letter-spacing: -3px; line-height: 95%; margin-bottom: 0.5em; }
+div.home_two_col { float: left; width: 410px; margin-right: 8px; }
+div.home_three_col { float: left; width: 275px; margin-right: 4px; }
+div.home_two_col.last { width: 418px; margin-right: 0px; }
+div.home_three_col.last { width: 279px; margin-right: 0px; }
 
 /* Datasets */
 #file_upload { width: 41%; float: right; padding: 2%; margin-top: 1em; margin-bottom: 1em; margin-right: 30%; border: 1px solid #dedede; }
 #file_upload p.inline-hints, #file_upload input[type="file"] { margin-bottom: 1em; }
 #pending_files { list-style: disc inside; }
 #pending_files input { margin: 0 0.5em 0 1em; }
+#dataset_name { font-size: 30px; font-weight: 100; margin-top: 20px; margin-bottom: 3px; }
+#dataset_date_range { font-size: 12px; font-weight: 100; margin: 0; }
+#dataset_date_range img { margin: -3px 3px 0 3px; }
+ul.dataset_stats { margin: 0; padding: 0; }
+ul.dataset_stats li { padding: 15px 20px; margin: 0; border-right: 1px solid #e8e8e6; font-size: 12px; width: 114px; }
+ul.dataset_stats li.last { border-right: none; }
+ul.dataset_stats li h5 { font-size: 10px; margin-top: 0; }
+#dataset_desc { padding: 15px 20px; }
+#dataset_desc img { float: left; margin-right: 20px; }
+#dataset_taxonomy li { padding: 10px 20px; }
+#dataset_taxonomy li.last { width: 424px; }
+#dataset_downloads { margin-top: 5px; padding: 20px; }
+#dataset_downloads h2.section_head { margin-top: 0; margin-bottom: 1.2em; }
+#download_counter { float: right; font-size: 12px; font-weight: normal; }
+a.download_button:link, a.download_button:visited { color: #fff !important; text-decoration: none; display: block; text-align: center; width: 121px; padding: 7px; margin-right: 15px; font-weight: bold; background: #504d3f -webkit-gradient(linear, 0% 0%, 0% 100%, from(#605d51), to(#464335)); background: #504d3f -moz-linear-gradient(center bottom, rgb(93,90,77), rgb(70,67,53)); border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; -webkit-box-shadow: 0px 1px 0px #716f63; -moz-box-shadow: 0px 1px 0px #716f63; }
+a.download_button:hover, a.download_button:active { background: #7BA523 -webkit-gradient(linear, 0% 0%, 0% 100%, from(#AAC572), to(#7BA523)); background: #7BA523 -moz-linear-gradient(center bottom, rgb(124,165,35), rgb(169,197,114)); }
+#new_app_link { float: right; font-size: 12px; font-weight: normal; }
+div.dataset_two_col { float: left; width: 305px; margin-right: 10px; }
+div.dataset_two_col.last { margin-right: 0px; }

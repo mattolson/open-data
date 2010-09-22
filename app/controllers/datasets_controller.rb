@@ -1,6 +1,6 @@
 class DatasetsController < ApplicationController
   before_filter :find_dataset, :only => [:show, :edit, :update, :destroy, :count_download]
-  before_filter :authenticate_admin!, :except => [:index, :show]
+  before_filter :authenticate_admin!, :except => [:index, :show, :tagged_with, :in_category, :count_download]
 
   # GET /datasets
   # GET /datasets.xml
@@ -16,6 +16,7 @@ class DatasetsController < ApplicationController
   # GET /datasets/1
   # GET /datasets/1.xml
   def show
+    @tags = @dataset.tags_on(:tags).map { |tag| tag.id }
     respond_to do |wants|
       wants.html # show.html.erb
       wants.xml  { render :xml => @dataset }
