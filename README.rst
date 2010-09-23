@@ -50,7 +50,7 @@ How To Get Started
 - Create admin account with console: heroku console, then Admin.create(:email => 'youremail', :password => 'yourpassword')
 - Customize site settings
 - Customize Devise settings
-- Customize action mailer host in environments/production.rb
+- Customize config.action_mailer.default_url_options in environments/production.rb
 - Publish your data
 
 
