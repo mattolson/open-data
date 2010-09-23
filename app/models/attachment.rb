@@ -1,6 +1,6 @@
 class Attachment < ActiveRecord::Base
   # Associations
-  belongs_to :dataset
+  belongs_to :dataset, :touch => :last_uploaded_at
 
   # Paperclip functionality
   has_attached_file :attachment,

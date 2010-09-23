@@ -1,6 +1,9 @@
-<% set_page_title 'Add Press Item' -%>
+<% set_page_title 'Add News Item' -%>
 <% content_for :domready do -%>
   $("#nav_news_link").addClass("selected");
 <% end -%>
 
-<h1>New Press Item</h1>
+<h1>Add News Item</h1>
+<% semantic_form_for @press_item, :url => press_items_path do |form| %>
+  <%= render :partial => 'form', :locals => {:form => form} %>
+<% end %>

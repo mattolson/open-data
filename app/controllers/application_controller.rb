@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
   
   protected
     def lookup_news
-      @press_items = PressItem.find(:all, :order => 'created_at desc', :limit => 3)
+      @press_preview = PressItem.find(:all, :order => 'published_at desc', :limit => 3)
     end
     
     # Override default rescue

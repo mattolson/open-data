@@ -32,14 +32,4 @@ class Dataset < ActiveRecord::Base
   # Set attributes available for mass-assignment
   attr_accessible :title, :description, :start_date, :end_date, :is_featured, :attachments_attributes, :category, :tag_list, :standard_list, :certification_list, :screenshot
   accepts_nested_attributes_for :attachments, :allow_destroy => true, :reject_if => :all_blank
-  
-  # Hooks
-  before_save :update_uploaded_at
-  
-  def update_uploaded_at
-    return unless self.attachments.loaded?
-    if self.attachments.any? { |a| a.new_record? }
-      self.last_uploaded_at = DateTime.now
-    end
-  end
 end

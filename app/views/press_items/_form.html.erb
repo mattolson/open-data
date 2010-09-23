@@ -1,0 +1,14 @@
+<% content_for :domready do -%>
+  $('#press_item_title').focus();
+<% end -%>
+
+<% form.inputs do -%>
+  <%= form.input :title %>
+  <%= form.input :link, :label => "URL" %>
+  <%= form.input :source, :hint => 'e.g. "TriplePundit"' %>
+  <%= form.input :published_at, :as => :string, :label => 'Date Published', :hint => 'mm/dd/yyyy' %>
+<% end -%>
+
+<% form.buttons do -%>
+  <%= form.commit_button %> or <%= link_to 'cancel', news_path %>
+<% end -%>

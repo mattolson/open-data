@@ -44,4 +44,10 @@ class Configs
     return @@DATASET_CERTIFICATIONS if defined?(@@DATASET_CERTIFICATIONS)
     @@DATASET_CERTIFICATIONS = [{}]
   end
+  
+  # Name of company running this site (for press items and such)
+  def self.company_name
+    return @@COMPANY_NAME if defined?(@@COMPANY_NAME)
+    @@COMPANY_NAME = 'Seventh Generation'
+  end
 end

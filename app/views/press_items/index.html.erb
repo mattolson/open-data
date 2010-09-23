@@ -3,4 +3,37 @@
   $("#nav_news_link").addClass("selected");
 <% end -%>
 
-<h1>News</h1>
+<div id="sidebar">
+  <h2 class="section_head comment">Press Contact</h2>
+  <div class="box">
+    <div class="contents">
+      <%= render :partial => '/shared/press_contact' %>
+    </div>
+  </div>
+  <% if admin_signed_in? -%>
+    <h2 class="section_head pencil">Admin</h2>
+    <p><%= link_to 'Add News Item', new_press_item_path %></p>
+  <% end -%>
+</div>
+
+<div id="primary">
+  <h2 class="section_head comment">What's New?</h2>
+  <div id="press_list">
+    <% @press_items.each do |press| -%>
+      <div class="box">
+        <div class="contents">
+          <% if admin_signed_in? -%>
+            <div class="admin">
+              <h2 class="section_head pencil">Admin</h2>
+              <p><%= link_to 'Edit Item', edit_press_item_path(press) %></p>
+              <p><%= link_to 'Delete Item', press_item_path(press), :method => :delete, :confirm => 'This will permanently delete this item from the list. Are you sure?' %></p>
+            </div>
+          <% end -%>
+          <h3><%= link_to h(press.title), press.link, :target => '_blank' %></h3>
+          <p><%= format_date(press.published_at) %>, <%= h(press.source) %></p>
+        </div>
+        <div class="clear_left"></div>
+      </div>
+    <% end -%>
+  </div>
+</div>

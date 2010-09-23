@@ -46,9 +46,11 @@ ActionController::Routing::Routes.draw do |map|
 
   # Companies
   map.resources :companies
+  map.participants 'participants', :controller => 'companies', :action => 'index'
 
   # Press
   map.resources :press_items
+  map.news 'news', :controller => 'press_items', :action => 'index'
 
   # Authentication
   map.devise_for :admins

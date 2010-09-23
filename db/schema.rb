@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100920202558) do
+ActiveRecord::Schema.define(:version => 20100922215023) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
@@ -100,11 +100,11 @@ ActiveRecord::Schema.define(:version => 20100920202558) do
 
   create_table "press_items", :force => true do |t|
     t.string   "title",        :null => false
-    t.text     "blurb"
     t.string   "link"
     t.datetime "published_at", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "source"
   end
 
   create_table "taggings", :force => true do |t|

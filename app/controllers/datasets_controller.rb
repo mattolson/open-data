@@ -46,6 +46,7 @@ class DatasetsController < ApplicationController
     @dataset = Dataset.new(params[:dataset])
     prep_dataset_form
     @dataset.save!
+    publish_press_item("New dataset added: #{@dataset.title}")
 
     respond_to do |wants|
       flash[:notice] = 'Dataset was successfully created.'
@@ -59,6 +60,7 @@ class DatasetsController < ApplicationController
   def update
     prep_dataset_form
     @dataset.update_attributes!(params[:dataset])
+    publish_press_item("Dataset updated: #{@dataset.title}") if attachments_updated?
     
     respond_to do |wants|
       flash[:notice] = 'Dataset was successfully updated.'
@@ -127,5 +129,22 @@ class DatasetsController < ApplicationController
       certifications = Dataset.tag_counts_on(:certifications)
       @certifications = certifications.empty? ? Configs.dataset_certifications : certifications.map { |tag| {:value => tag.name} }
       @current_certifications = @dataset.certification_list.map { |tag| {:value => tag} }
+    end
+    
+    def attachments_updated?
+      params[:dataset][:attachments_attributes].each do |key,value|
+        return true if value.has_key?('attachment')
+      end
+      false
+    end
+
+    # Publish news item for creation/updates
+    def publish_press_item(press_title)
+      press_item = PressItem.new
+      press_item.title = press_title
+      press_item.source = Configs.company_name
+      press_item.link = dataset_url(@dataset)
+      press_item.published_at = DateTime.now
+      press_item.save!
     end
 end
