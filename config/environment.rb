@@ -29,6 +29,7 @@ Rails::Initializer.run do |config|
   config.gem 'formtastic', :version => '1.0.1'
   config.gem 'validates_timeliness', :version => '2.3.1'
   config.gem 'acts-as-taggable-on', :version => '2.0.6'
+  config.gem 'mail_form', :version => '1.0.0'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

@@ -84,7 +84,7 @@ class ApplicationController < ActionController::Base
     
       # Default error response
       respond_to do |format|
-        format.html { @redirect_on_error ? redirect_to(@redirect_on_error) : render(:action => record.new_record? ? :new : :edit) }
+        format.html { @redirect_on_error ? redirect_to(@redirect_on_error) : render(:action => @redirect_action_on_error || (record.new_record? ? :new : :edit)) }
         format.xml { render :xml => record.errors, :status => :unprocessable_entity }
       end
     end
@@ -100,6 +100,7 @@ class ApplicationController < ActionController::Base
       messages = ''
       objects.each do |object|
         object.errors.each do |attr, msg|
+          attr = attr.to_s
           if attr == 'base'
             messages += "<li>#{msg}</li>"
           else

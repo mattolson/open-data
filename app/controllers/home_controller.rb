@@ -4,15 +4,21 @@ class HomeController < ApplicationController
     @apps = App.find(:all, :conditions => ["is_published = ? and is_featured = ?", true, true], :limit => 3, :order => 'created_at desc')
   end
 
+  def contact
+    @contact_form = ContactForm.new
+
+    if request.post?
+      @redirect_action_on_error = :contact
+      @contact_form = ContactForm.new(params[:contact_form])
+      @contact_form.send!
+      flash[:notice] = "Your message has been sent. Thanks!"
+      redirect_to contact_path
+    end
+  end
+
   def about
   end
 
-  def contact
-  end
-
   def license
-  end
-
-  def participants
   end
 end

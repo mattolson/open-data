@@ -1,3 +1,17 @@
 <% set_page_title 'Contact Us' -%>
+<% content_for :domready do -%>
+  $('#contact_form_name').focus();
+<% end -%>
 
 <h1>Contact us</h1>
+<% semantic_form_for @contact_form, :url => contact_path do |form| %>
+  <% form.inputs do -%>
+    <%= form.input :name, :label => "Your Name" %>
+    <%= form.input :email, :label => "Your Email Address" %>
+    <%= form.input :message, :as => :text %>
+  <% end -%>
+
+  <% form.buttons do -%>
+    <%= form.commit_button :label => "Send Message" %>
+  <% end -%>
+<% end %>
