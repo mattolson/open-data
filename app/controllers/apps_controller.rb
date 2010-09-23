@@ -45,8 +45,10 @@ class AppsController < ApplicationController
   # PUT /apps/1
   # PUT /apps/1.xml
   def update
+    was_published = @app.is_published
     @app.update_attributes!(params[:app])
-
+    publish_press_item if !was_published && @app.is_published
+    
     respond_to do |wants|
       flash[:notice] = 'App was successfully updated.'
       wants.html { redirect_to(apps_url) }
@@ -68,5 +70,15 @@ class AppsController < ApplicationController
   private
     def find_app
       @app = App.find(params[:id])
+    end
+
+    # Publish news item on creation
+    def publish_press_item
+      press_item = PressItem.new
+      press_item.title = "New application added: #{@app.title}"
+      press_item.source = Configs.company_name
+      press_item.link = app_url(@app)
+      press_item.published_at = DateTime.now
+      press_item.save!
     end
 end
