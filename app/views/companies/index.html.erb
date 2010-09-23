@@ -1,2 +1,32 @@
-<h1>Company#index</h1>
-<p>Find me in app/views/company/index.html.erb</p>
+<% set_page_title 'Participants' -%>
+
+<div id="sidebar">
+  <h2 class="section_head comment">Participate</h2>
+  <div class="box">
+    <div class="contents">
+      <p>Have you <%= link_to 'cloned this site', 'http://github.com/mattolson/open-data', :target => '_blank' %> and published your own data?</p>
+      <p><%= link_to 'Let us know', new_company_path %> and we'll publish a link on this page.</p>
+    </div>
+  </div>
+</div>
+
+<div id="primary">
+  <% if admin_signed_in? && @pending_companies.size > 0 -%>
+    <h2 class="section_head pencil">Pending Participants</h2>
+      <div class="company_list">
+        <%= render :partial => 'list', :locals => {:companies => @pending_companies } %>
+      </div>
+      <div class="clear_left"></div>
+      <hr />
+  <% end -%>
+
+  <div class="company_list">
+    <%= render :partial => 'list', :locals => {:companies => @companies } %>
+    <% if @companies.size == 0 -%>
+      <p>None yet, check back soon...</p>
+    <% end -%>
+    <div class="clear_left"></div>
+  </div>
+
+  <div class="clear_left"></div>
+</div>

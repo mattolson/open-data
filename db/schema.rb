@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100922215023) do
+ActiveRecord::Schema.define(:version => 20100923003628) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
@@ -69,16 +69,18 @@ ActiveRecord::Schema.define(:version => 20100922215023) do
   add_index "attachments", ["dataset_id"], :name => "index_attachments_on_dataset_id"
 
   create_table "companies", :force => true do |t|
-    t.string   "name",                               :null => false
-    t.text     "description"
+    t.string   "name",                                 :null => false
     t.string   "link"
-    t.string   "submitter_name",                     :null => false
-    t.string   "submitter_email",                    :null => false
-    t.datetime "submitted_at",                       :null => false
-    t.datetime "published_at"
-    t.boolean  "is_partner",      :default => false, :null => false
+    t.string   "submitter_name",                       :null => false
+    t.string   "submitter_email",                      :null => false
+    t.boolean  "is_partner",        :default => false, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_published",      :default => false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   create_table "datasets", :force => true do |t|

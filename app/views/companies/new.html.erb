@@ -1,2 +1,6 @@
-<h1>Company#new</h1>
-<p>Find me in app/views/company/new.html.erb</p>
+<% set_page_title 'Add Your Company' -%>
+
+<h1>Add Your Company</h1>
+<% semantic_form_for @company, :url => companies_path, :html => {:multipart => true} do |form| %>
+  <%= render :partial => 'form', :locals => {:form => form} %>
+<% end %>

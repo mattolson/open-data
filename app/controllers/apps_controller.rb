@@ -1,12 +1,12 @@
 class AppsController < ApplicationController
-  before_filter :find_app, :only => [:show, :edit, :update, :destroy]
+  before_filter :find_app, :only => [:edit, :update, :destroy]
   before_filter :authenticate_admin!, :except => [:index, :new, :create]
 
   # GET /apps
   # GET /apps.xml
   def index
-    @apps = App.find(:all, :conditions => ["is_published = ?", true])
-    @pending_apps = App.find(:all, :conditions => ["is_published = ?", false])
+    @apps = App.find(:all, :conditions => ["is_published = ?", true], :order => 'is_featured desc, created_at desc')
+    @pending_apps = App.find(:all, :conditions => ["is_published = ?", false], :order => 'created_at desc')
 
     respond_to do |wants|
       wants.html # index.html.erb

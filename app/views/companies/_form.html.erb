@@ -1,0 +1,22 @@
+<% content_for :domready do -%>
+  $('#company_name').focus();
+<% end -%>
+
+<% form.inputs do -%>
+  <%= form.input :name %>
+  <%= form.input :link, :label => 'Company website' %>
+  <%= form.input :submitter_name, :label => 'Your name' %>
+  <%= form.input :submitter_email, :label => 'Your email', :hint => 'Will not be published or shared' %>
+  <%= form.input :logo %>
+  <% if form.object.logo_file_name -%>
+    <p class="standalone"><%= image_tag form.object.logo.url(:thumb) %></p>
+  <% end -%>
+  <% if admin_signed_in? -%>
+    <%= form.input :is_partner, :required => false, :label => 'Is a partner' %>
+    <%= form.input :is_published, :required => false, :label => 'Approved' %>
+  <% end -%>
+<% end -%>
+
+<% form.buttons do -%>
+  <%= form.commit_button %> or <%= link_to 'cancel', participants_path %>
+<% end -%>
