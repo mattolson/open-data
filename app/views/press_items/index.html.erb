@@ -30,7 +30,7 @@
             </div>
           <% end -%>
           <h3><%= link_to h(press.title), press.link, :target => '_blank' %></h3>
-          <p><%= format_date(press.published_at) %>, <%= h(press.source) %></p>
+          <p class="source"><%= format_date(press.published_at) %>, <%= h(press.source) %></p>
         </div>
         <div class="clear_left"></div>
       </div>
