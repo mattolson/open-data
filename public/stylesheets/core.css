@@ -92,6 +92,11 @@ div.box_header h2 { color: #fff; font-size: 15px; margin-top: 0; }
 #partners ul.inline { float: right; }
 #partners ul.inline li { margin-right: 20px; }
 
+/* Follow us */
+a.social_button { float: left; display: block; width: 36px; height: 36px; text-indent: -1000em; outline: 0; margin-right: 15px; background: transparent url(/images/icons/facebook.png) 0 0 no-repeat; }
+a.social_button:hover { background-position: 0 -36px; }
+#twitter_button { background-image: url(/images/icons/twitter.png); }
+
 /* Tooltips */
 .tooltip { display: none; background: transparent url(/images/black_arrow.png) no-repeat; font-size: 12px; height: 70px; width: 160px; padding: 25px; color: #fff; }
 .tooltip.bottom { background-image: url(/images/black_arrow_bottom.png); padding-top: 40px; height: 55px; }

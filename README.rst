@@ -65,10 +65,13 @@ Many thanks to these fine contributors to the open source community!
 - Formtastic 1.0.1: http://github.com/justinfrench/formtastic
 - Paperclip 2.3.3: http://github.com/thoughtbot/paperclip
 - FAMFAMFAM Silk 1.3: http://famfamfam.com/lab/icons/silk/
+- IconDock social media icons: http://icondock.com/free/vector-social-media-icons
 - validates_timeliness 2.2.2: http://github.com/adzap/validates_timeliness/
 - acts_as_taggable_on 2.0.6: http://github.com/mbleigh/acts-as-taggable-on
+- mail_form 1.0.0: http://github.com/plataformatec/mail_form/tree/v1.0
 - jQuery 1.4.2: http://jquery.com/
 - AutoSuggest jQuery plugin: http://code.drewwilson.com/entry/autosuggest-jquery-plugin
+
 
 License
 =======

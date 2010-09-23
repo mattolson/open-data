@@ -1,4 +1,7 @@
-<% set_page_title h(@dataset.title) -%>
+<% 
+  set_page_title h(@dataset.title)
+  add_js_include 'http://platform.twitter.com/widgets.js'
+-%>
 <% content_for :domready do -%>
   $("#nav_datasets_link").addClass("selected");
   $("#dataset_downloads a").tooltip({ effect: 'slide'}).dynamic();
@@ -16,6 +19,14 @@
     <p><%= link_to 'Edit Dataset', edit_dataset_path(@dataset) %></p>
     <p><%= link_to 'Delete Dataset', dataset_path(@dataset), :method => :delete, :confirm => 'This will permanently destroy the dataset and its associated files. Are you sure?' %></p>
   <% end -%>
+  <div class="box" id="social_badges">
+    <div class="contents">
+      <h3>Share This Dataset</h3>
+      <p><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="SeventhGen">Tweet</a></p>
+      <iframe src="http://www.facebook.com/plugins/like.php?href=<%= u(request.url) %>&amp;layout=button_count&amp;show_faces=false&amp;width=150&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px; margin-top:10px;" allowTransparency="true"></iframe>
+    </div>
+  </div>
+  
 </div>
 
 <div id="primary">
