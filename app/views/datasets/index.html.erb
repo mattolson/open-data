@@ -7,7 +7,9 @@
   <%= render :partial => 'sidebar', :locals => {:category => @category, :tags => (@tag ? [@tag.id] : [])} %>
   <% if admin_signed_in? -%>
     <h2 class="section_head pencil">Admin</h2>
-    <p><%= link_to 'Add New Dataset', new_dataset_path %></p>
+    <ul>
+      <li><%= link_to 'Add New Dataset', new_dataset_path %></li>
+    </ul>
   <% end -%>
   <div class="box" id="suggestions">
     <div class="contents">

@@ -12,7 +12,9 @@
   </div>
   <% if admin_signed_in? -%>
     <h2 class="section_head pencil">Admin</h2>
-    <p><%= link_to 'Add News Item', new_press_item_path %></p>
+    <ul>
+      <li><%= link_to 'Add News Item', new_press_item_path %></li>
+    </ul>
   <% end -%>
 </div>
 

@@ -16,8 +16,10 @@
   <%= render :partial => 'sidebar', :locals => {:category => @dataset.category, :tags => @tags} %>
   <% if admin_signed_in? -%>
     <h2 class="section_head pencil">Admin</h2>
-    <p><%= link_to 'Edit Dataset', edit_dataset_path(@dataset) %></p>
-    <p><%= link_to 'Delete Dataset', dataset_path(@dataset), :method => :delete, :confirm => 'This will permanently destroy the dataset and its associated files. Are you sure?' %></p>
+    <ul>
+      <li><%= link_to 'Edit Dataset', edit_dataset_path(@dataset) %></li>
+      <li><%= link_to 'Delete Dataset', dataset_path(@dataset), :method => :delete, :confirm => 'This will permanently destroy the dataset and its associated files. Are you sure?' %></li>
+    </ul>
   <% end -%>
   <div class="box" id="social_badges">
     <div class="contents">
