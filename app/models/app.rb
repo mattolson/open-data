@@ -12,7 +12,7 @@ class App < ActiveRecord::Base
                                          :secret_access_key => ENV['S3_SECRET'] }
 
   # Validation
-  validates_presence_of :title, :description, :submitter_name
+  validates_presence_of :title, :description, :submitter_name, :datasets
   validates_format_of :submitter_email, :with => ARValidation::EMAIL_RE
   validates_format_of :application_link, :with => ARValidation::URI_RE
   validates_format_of :author_link, :with => ARValidation::URI_RE, :allow_blank => true
