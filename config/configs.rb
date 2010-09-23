@@ -50,4 +50,16 @@ class Configs
     return @@COMPANY_NAME if defined?(@@COMPANY_NAME)
     @@COMPANY_NAME = 'Seventh Generation'
   end
+
+  # Email address to use for site notifications
+  def self.notification_email_from
+    return @@NOTIFICATION_EMAIL_FROM if defined?(@@NOTIFICATION_EMAIL_FROM)
+    @@NOTIFICATION_EMAIL_FROM = '"Open Data App" <app@rubycloud.com>'
+  end
+
+  # Email address to use for site notifications
+  def self.notification_email_to
+    return @@NOTIFICATION_EMAIL_TO if defined?(@@NOTIFICATION_EMAIL_TO)
+    @@NOTIFICATION_EMAIL_TO = '"Matt Olson" <molson@rubycloud.com>'
+  end
 end

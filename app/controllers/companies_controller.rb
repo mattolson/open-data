@@ -34,6 +34,7 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(params[:company])
     @company.save!
+    Mailer.deliver_new_company
 
     respond_to do |wants|
       flash[:notice] = "Your request has been submitted. We'll get back to you soon. Thanks!"

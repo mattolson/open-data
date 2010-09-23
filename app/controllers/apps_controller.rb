@@ -34,6 +34,7 @@ class AppsController < ApplicationController
   def create
     @app = App.new(params[:app])
     @app.save!
+    Mailer.deliver_new_app
 
     respond_to do |wants|
       flash[:notice] = "Your application has been submitted. You will receive an email once we've taken a look. Thanks!"
