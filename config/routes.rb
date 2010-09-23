@@ -36,6 +36,9 @@ ActionController::Routing::Routes.draw do |map|
   map.contact 'contact', :controller => 'home', :action => 'contact'
   map.license 'license', :controller => 'home', :action => 'license'
   
+  # Email list
+  map.email_signup 'email_signup', :controller => 'home', :action => 'email_signup', :conditions => {:method => :post}
+  
   # Datasets
   map.resources :datasets, :member => {:count_download => :post}
   map.tagged_datasets 'datasets/tagged/:tag', :controller => 'datasets', :action => 'tagged_with'

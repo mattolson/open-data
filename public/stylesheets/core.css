@@ -24,7 +24,7 @@ h3 { font-size: 108%; font-weight: bold; }
 h4, h5, h6 { font-size: 100%; font-weight: bold; }
 #flashes { max-width: 600px; margin: 1em auto; clear: both; }
 div.notice, div.error { background: #fdfdfd url(/images/icons/warning.png) 15px 15px no-repeat; padding: 15px 15px 15px 90px; border: 1px solid #f0f0f0; min-height: 50px; }
-div.notice { background-image: url(/images/icons/info.png); }
+div.notice { background-image: url(/images/icons/notice.png); }
 div.notice h3, div.notice ul, div.notice p { width: 75%; }
 div.notice h3, div.error h3 { color: #79a31f; margin-top: 0; font-size: 123.1%; }
 div.notice ul, div.error ul { color: #423f30; margin-top: 1em; }
@@ -152,3 +152,10 @@ ul.datasetlist_stats li h5, ul.applist_stats li h5 { font-size: 10px; margin-top
 
 /* Companies */
 div.company { text-align: center; width: 200px; min-height: 150px; margin-top: 2em; float: left; }
+
+/* Updates form */
+#updates_form { display: none; background-color: #fdfdfd; padding: 25px; width: 500px; border: 1px solid #f0f0f0; }
+#updates_form .close { background-image: url(/images/icons/close.png); position: absolute; right: 15px; top: 15px; cursor: pointer; height: 20px; width: 20px; }
+#updates_form .close:hover { background-image: url(/images/icons/close_over.png); }
+#updates_form h2 { color: #82a92e; margin-top: 0; }
+#flash_signup_form_error { width: 75%; }

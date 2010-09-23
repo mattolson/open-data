@@ -25,6 +25,25 @@
   	  $("#header ul.nav a").mouseout(function () {
   	    $(this).removeClass("button");
   	  });
+  	  $("#nav_updates_link").overlay({
+  	    top: 150,
+  	    mask: { color: '#000000', opacity: 0.6 }
+      });
+      $("#email_signup_form").submit(function() {
+        $.post('<%= email_signup_path %>', 
+                $(this).serialize(), 
+                function(data) {
+                  $("#flash_signup_form_error").remove();
+                  $("#updates_form_header").hide();
+                  if (data.success)
+                    $("#email_signup_form").hide();
+                  $("#email_signup_form").before(data.msg);
+                  $("#flash_signup_form_error a.close_box").remove();
+                },
+                "json"
+              );
+        return false;
+      });
     	<%= yield :domready %>
   	});
   	//]]>
@@ -60,7 +79,7 @@
       <li><%= link_to 'Datasets', datasets_path, :id => 'nav_datasets_link' %></li>
       <li><%= link_to 'Applications', apps_path, :id => 'nav_apps_link' %></li>
       <li><%= link_to 'News', news_path, :id => 'nav_news_link' %></li>
-      <li><%= link_to 'Get Updates', '', :id => 'nav_updates_link' %></li>
+      <li><%= link_to 'Get Updates', '#', :id => 'nav_updates_link', :rel => '#updates_form' %></li>
       <!-- <li><%= link_to 'Join Us', '', :id => 'nav_join_link' %></li> -->
       <% if admin_signed_in? -%>
         <li><%= link_to 'Logout', destroy_admin_session_path %></li>
@@ -121,6 +140,22 @@
       </h3>
     </div>
   </div>
+</div>
+
+<div id="updates_form">
+  <div id="updates_form_header">
+    <h2>Stay Informed</h2>
+    <p>Sign up for our email list, and we'll send you occasional updates. We'll never send spam or share your address with anyone else.</p>
+  </div>
+  <% semantic_form_for @signup_form, :url => email_signup_path, :html => {:id => 'email_signup_form'} do |form| %>
+    <% form.inputs do -%>
+      <%= form.input :email, :label => "Email Address" %>
+    <% end -%>
+
+    <% form.buttons do -%>
+      <%= form.commit_button :label => "Signup" %>
+    <% end -%>
+  <% end %>
 </div>
 </body>
 </html>

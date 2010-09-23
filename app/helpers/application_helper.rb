@@ -1,32 +1,5 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  def standard_flashes(flash_prefix = '')
-    flashes = ""
-    notice_flash = flash_prefix + (flash_prefix.empty? ? '' : '_') + 'notice'
-    error_flash = flash_prefix + (flash_prefix.empty? ? '' : '_') + 'error'
-    flash_container = flash_prefix + (flash_prefix.empty? ? '' : '_') + 'flashes'
-    
-    if flash[:notice]
-      flash_id = "flash_#{notice_flash}"
-      flashes += "<div id='#{flash_id}' class='notice'>"
-      flashes += link_to_function 'X', "$('##{flash_id}').fadeOut('fast')", :class => 'clear close_box'
-      flashes += flash[:notice]
-      flashes += "</div>"
-    end
-    
-    if flash[:alert] or flash[:error]
-      flash_id = "flash_#{error_flash}"
-      flashes += "<div id='#{flash_id}' class='error'>"
-      flashes += link_to_function 'X', "$('##{flash_id}').fadeOut('fast')", :class => 'clear close_box'
-      flashes += flash[:alert] if flash[:alert]
-      flashes += flash[:error] if flash[:error]
-      flashes += "</div>"
-    end
-    
-    flashes += '<script type="text/javascript">$("#' + flash_container + '").fadeIn("fast", function() { if (IE7) {IE7.recalc();} });</script>' unless flashes.blank?
-  	flashes
-  end
-  
   # Are we running in our arch-enemy Internet Explorer?
   def ie?
     user_agent.include?("msie")

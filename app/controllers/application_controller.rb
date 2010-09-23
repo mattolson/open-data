@@ -3,9 +3,9 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
-  helper_method :controller_name, :page_title, :set_page_title, :add_css_include, :extra_css_includes, :add_js_include, :extra_js_includes, :user_agent
+  helper_method :controller_name, :page_title, :set_page_title, :add_css_include, :extra_css_includes, :add_js_include, :extra_js_includes, :user_agent, :standard_flashes
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  before_filter :lookup_news
+  before_filter :lookup_news, :init_signup
 
   # Set page title
   def set_page_title(title)
@@ -47,6 +47,10 @@ class ApplicationController < ActionController::Base
     def lookup_news
       @press_preview = PressItem.find(:all, :order => 'published_at desc', :limit => 3)
     end
+
+    def init_signup
+      @signup_form = SignupForm.new
+    end
     
     # Override default rescue
     alias :orig_rescue_action_in_public :rescue_action_in_public
@@ -80,12 +84,14 @@ class ApplicationController < ActionController::Base
     # the default is to redirect to new or edit as the case may be.
     def render_invalid_record(record)
       # Stuff error messages into flash
-      flash_error_messages_for(record.class.to_s.underscore.to_sym)
+      class_name = record.class.to_s.underscore
+      flash_error_messages_for(class_name.to_sym)
     
       # Default error response
       respond_to do |format|
         format.html { @redirect_on_error ? redirect_to(@redirect_on_error) : render(:action => @redirect_action_on_error || (record.new_record? ? :new : :edit)) }
         format.xml { render :xml => record.errors, :status => :unprocessable_entity }
+        format.js { render :json => {:success => false, :msg => standard_flashes(class_name)} }
       end
     end
 
@@ -115,5 +121,32 @@ class ApplicationController < ActionController::Base
       else
         flash.now[:error] = messages
       end
+    end
+
+    def standard_flashes(flash_prefix = '')
+      flashes = ""
+      notice_flash = flash_prefix + (flash_prefix.empty? ? '' : '_') + 'notice'
+      error_flash = flash_prefix + (flash_prefix.empty? ? '' : '_') + 'error'
+      flash_container = flash_prefix + (flash_prefix.empty? ? '' : '_') + 'flashes'
+
+      if flash[:notice]
+        flash_id = "flash_#{notice_flash}"
+        flashes += "<div id='#{flash_id}' class='notice'>"
+        flashes += "<a href='' onclick=\"$('##{flash_id}').fadeOut('fast')\" class='clear close_box'>X</a>"
+        flashes += flash[:notice]
+        flashes += "</div>"
+      end
+
+      if flash[:alert] or flash[:error]
+        flash_id = "flash_#{error_flash}"
+        flashes += "<div id='#{flash_id}' class='error'>"
+        flashes += "<a href='' onclick=\"$('##{flash_id}').fadeOut('fast')\" class='clear close_box'>X</a>"
+        flashes += flash[:alert] if flash[:alert]
+        flashes += flash[:error] if flash[:error]
+        flashes += "</div>"
+      end
+
+      flashes += '<script type="text/javascript">$("#' + flash_container + '").fadeIn("fast", function() { if (IE7) {IE7.recalc();} });</script>' unless flashes.blank?
+    	flashes
     end
 end

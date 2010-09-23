@@ -1,11 +1,9 @@
-class ContactForm < MailForm
+class SignupForm < MailForm
   sender Configs.notification_email_from
   recipients Configs.notification_email_to
-  subject "Contact - Open Data Project"
+  subject "Email Signup - Open Data Project"
 
-  attribute :name,    :validate => true
-  attribute :email,   :validate => ARValidation::EMAIL_RE
-  attribute :message, :validate => true
+  attribute :email, :validate => ARValidation::EMAIL_RE
   
   def deliver!
     if valid?
