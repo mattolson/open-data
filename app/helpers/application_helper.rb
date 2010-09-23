@@ -9,8 +9,7 @@ module ApplicationHelper
     if flash[:notice]
       flash_id = "flash_#{notice_flash}"
       flashes += "<div id='#{flash_id}' class='notice'>"
-      flashes += link_to_function image_tag('icons/fam_silk/cross.png', :alt => 'X', :style => 'width:16px;height:16px;'), "$('##{flash_id}').fadeOut('fast')", :class => 'clear close_box'
-      flashes += image_tag('icons/fam_silk/information.png', :alt => 'Info', :style => 'width:16px;height:16px;')
+      flashes += link_to_function 'X', "$('##{flash_id}').fadeOut('fast')", :class => 'clear close_box'
       flashes += flash[:notice]
       flashes += "</div>"
     end
@@ -18,8 +17,7 @@ module ApplicationHelper
     if flash[:alert] or flash[:error]
       flash_id = "flash_#{error_flash}"
       flashes += "<div id='#{flash_id}' class='error'>"
-      flashes += link_to_function image_tag('icons/fam_silk/cross.png', :alt => 'X', :style => 'width:16px;height:16px;'), "$('##{flash_id}').fadeOut('fast')", :class => 'clear close_box'
-      flashes += image_tag('icons/fam_silk/error.png', :alt => 'Error', :style => 'width:16px;height:16px;')
+      flashes += link_to_function 'X', "$('##{flash_id}').fadeOut('fast')", :class => 'clear close_box'
       flashes += flash[:alert] if flash[:alert]
       flashes += flash[:error] if flash[:error]
       flashes += "</div>"
