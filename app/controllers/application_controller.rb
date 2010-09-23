@@ -58,10 +58,13 @@ class ApplicationController < ActionController::Base
       # Log error using ExceptionLoggable unless a 404 or typical invalid record exception that gets handled below
       if response_code_for_rescue(exception) != :not_found && !exception.is_a?(ActiveRecord::RecordInvalid)
         #log_exception(exception)
+      elsif exception.is_a?(ActiveRecord::RecordInvalid)
+        # Handle common ActiveRecord validation exception centrally
+        render_invalid_record(exception.record)
+      else
+        # Call parent implementation
+        orig_rescue_action_in_public(exception)
       end
-      
-      # Call parent implementation
-      orig_rescue_action_in_public(exception)
     end
 
     # By rescuing ActiveRecord validation errors, we handle the common pattern
