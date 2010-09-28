@@ -10,7 +10,7 @@
   <%= form.input :submitter_email, :label => 'Author email', :hint => 'Will not be published or shared' %>
   <%= form.input :author_link, :label => 'Author website', :required => false, :hint => 'If different from application site' %>
   <%= form.input :datasets, :as => :check_boxes %>
-  <%= form.input :screenshot %>
+  <%= form.input :screenshot, :hint => 'Square images will look best' %>
   <% if form.object.screenshot_file_name -%>
     <p class="standalone"><%= image_tag form.object.screenshot.url(:thumb) %></p>
   <% end -%>

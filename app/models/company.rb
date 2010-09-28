@@ -2,6 +2,7 @@ class Company < ActiveRecord::Base
   # Paperclip functionality
   has_attached_file :logo,
                     :styles         => { :thumb => ["150x150>", :png] },
+                    :convert_options => { :thumb => "-background transparent -gravity center -extent 150x150" },
                     :storage        => :s3,
                     :path           => "#{ ENV['RAILS_ENV'] }/companies/:id/:style_:filename",
                     :bucket         => ENV['S3_BUCKET'],

@@ -12,6 +12,7 @@ class Dataset < ActiveRecord::Base
   # Paperclip functionality
   has_attached_file :screenshot,
                     :styles         => { :thumb => ["100x100>", :png] },
+                    :convert_options => { :thumb => "-background transparent -gravity center -extent 100x100" },
                     :storage        => :s3,
                     :path           => "#{ ENV['RAILS_ENV'] }/datasets/:id/:style_:filename",
                     :bucket         => ENV['S3_BUCKET'],

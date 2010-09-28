@@ -41,7 +41,7 @@
     </div>
     <div class="clear"></div>
 
-    <%= form.input :screenshot %>
+    <%= form.input :screenshot, :hint => 'Square images will look best' %>
     <% if form.object.screenshot_file_name -%>
       <p class="standalone"><%= image_tag form.object.screenshot.url(:thumb) %></p>
     <% end -%>
