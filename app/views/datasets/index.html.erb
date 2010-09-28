@@ -1,6 +1,18 @@
 <% set_page_title 'Datasets' -%>
 <% content_for :domready do -%>
   $("#nav_datasets_link").addClass("selected");
+  <% 
+  replies_query = []
+  @datasets.each_with_index do |d,i|
+    replies_query << "url#{i}=#{dataset_url(d)}"
+  end 
+  replies_query = replies_query.join('&')
+  -%>
+  (function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = 'http://<%= ENV["DISQUS_SHORTNAME"] %>.disqus.com/get_num_replies.js?<%= replies_query %>';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
 <% end -%>
 
 <div id="sidebar">
@@ -49,7 +61,7 @@
           </li>
           <li>
             <h5>COMMENTS</h5>
-            <div style="font-size: 10px; text-align: left;"><%= link_to 'Comments', dataset_url(dataset) + '#disqus_thread', :class => 'dsq-comment-count' %></div>
+            <%= link_to '0', dataset_url(dataset) + '#disqus_thread', :class => 'dsq-comment-count' %>
           </li>
           <li>
             <h5>DOWNLOADS</h5>
