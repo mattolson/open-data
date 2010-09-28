@@ -8,6 +8,12 @@
       <p><%= link_to 'Let us know', new_company_path %> and we'll publish a link on this page.</p>
     </div>
   </div>
+  <% if admin_signed_in? -%>
+    <h2 class="section_head pencil">Admin</h2>
+    <ul>
+      <li><%= link_to 'Add New Company', new_company_path %></li>
+    </ul>
+  <% end -%>
 </div>
 
 <div id="primary">
