@@ -1,6 +1,5 @@
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-  <% if defined?(page_id) %>var disqus_identifier = '<%= page_id %>';<% end %>
   <% if ENV["RAILS_ENV"] != "production" %>var disqus_developer = 1;<% end %>
   (function() {
    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
