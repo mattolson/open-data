@@ -16,7 +16,7 @@
     <%= link_to image_tag(dataset.screenshot.url(:thumb), :class => 'thumb'), dataset_path(dataset), :class => "clear" %>
     <h3><%= link_to h(dataset.title), dataset_path(dataset) %></h3>
     <% unless dataset.tag_list.blank? -%>
-      <p>Tags: <%= dataset.tags.map {|tag| link_to h(tag.name), tagged_datasets_path(tag.slug) }.join(', ') %></p>
+      <p><%= dataset.tags.map {|tag| link_to h(tag.name), tagged_datasets_path(tag.slug) }.join(', ') %></p>
     <% end -%>
   </div>
 <% end -%>
@@ -27,7 +27,7 @@
   <div class="box home_three_col<%= i > 0 && i % 2 == 0 ? ' last' : '' %>">
     <%= link_to image_tag(app.screenshot.url(:thumb), :class => 'thumb'), app.application_link, :target => :_blank, :class => "clear" %>
     <h3><%= link_to h(app.title), app.application_link, :target => :_blank %></h3>
-    <p>by <%= app.author_link.blank? ? h(app.submitter_name) : link_to(h(app.submitter_name), app.author_link, :target => '_blank') %></p>
+    <p><%= app.author_link.blank? ? h(app.submitter_name) : link_to(h(app.submitter_name), app.author_link, :target => '_blank') %></p>
   </div>
 <% end -%>
 <div class="clear"></div>
