@@ -49,7 +49,7 @@ div.box img.thumb { float: left; border-right: 1px solid #ececea; margin-right: 
 div.box div.contents { padding: 1.5em; }
 div.contents > :first-child { margin-top: 0; }
 div.box_header { padding: 15px 20px; background: #474436 -webkit-gradient(linear, 0% 0%, 0% 100%, from(#595649), to(#423f30)); background: #474436 -moz-linear-gradient(center top, rgb(89,86,73), rgb(66,63,48)); border-radius: 4px 4px 0 0; -moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; }
-div.box_header h2 { color: #fff; font-size: 15px; margin-top: 0; }
+div.box_header h2 { color: #fff; font-size: 16px; margin-top: 0; }
 
 /* Page structure */
 #header_container, #footer_container { background-color: #423f30; color: #c6c5c1; }
@@ -69,7 +69,7 @@ div.box_header h2 { color: #fff; font-size: 15px; margin-top: 0; }
 #meta_header, #header { width: 965px; margin: 0 auto; }
 #meta_header h3 { background: url(/images/icons/open_data.png) 0 50% no-repeat; margin: 0; padding: 11px 0 12px 35px; width: 150px; }
 #meta_header a { color: #fff; }
-#meta_header a:hover, #meta_header a:active { color: #79a31f; }
+#meta_header a:hover, #meta_header a:active { color: #79a31f; text-decoration: none; }
 #meta_header a { font-weight: bold; }
 #meta_header ul { float: right; margin-top: 12px; }
 #meta_header ul li { margin-right: 30px; }
@@ -145,7 +145,9 @@ div.dataset_two_col.last { margin-right: 0px; }
 /* Lists */
 div.dataset_list div.box_header { margin-top: 20px; }
 div.dataset_list div.box_header:first-child { margin-top: 0; }
-div.dataset_list div.box_header h2 a { float: right; font-size: 12px; padding-top: 2px; }
+div.dataset_list div.box_header h2 a { color: #fff; }
+div.dataset_list div.box_header h2 a:hover { color: #79a31f; text-decoration: none; }
+div.dataset_list div.box_header h2 a.view_all { padding-top: 3px; font-size: 12px; }
 div.dataset_list div.box img.thumb { margin-right: 0; }
 div.dataset_list div.description, ul.datasetlist_stats, ul.applist_stats { margin: 0 0 0 100px; }
 div.dataset_list div.description { padding: 15px 20px; border-left: 1px solid #e8e8e6; }
@@ -155,6 +157,7 @@ ul.datasetlist_stats li.first { width: 130px; }
 ul.applist_stats li { width: 327px; }
 ul.applist_stats li.first { width: 110px; }
 ul.datasetlist_stats li h5, ul.applist_stats li h5 { font-size: 9px; margin-top: 0; color: #79a31f; font-weight: normal; }
+ul.datasetlist_stats li a.dsq-comment-count { color: #423f30; }
 #suggestions { margin-top: 35px; }
 
 /* Press */

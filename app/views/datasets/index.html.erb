@@ -46,7 +46,7 @@
   <div class="dataset_list">
     <% @datasets.each do |dataset| -%>
       <div class="box_header">
-        <h2><%= link_to 'Details &raquo;', dataset %><%=h dataset.title %></h2>
+        <h2><%= link_to 'Details &raquo;', dataset, :class => 'view_all' %><%= link_to h(dataset.title), dataset %></h2>
       </div>
       <div class="box">
         <%= link_to image_tag(dataset.screenshot.url(:thumb), :class => 'thumb'), dataset, :class => 'clear' %>
