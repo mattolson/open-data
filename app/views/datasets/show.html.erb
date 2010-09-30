@@ -4,7 +4,7 @@
 -%>
 <% content_for :domready do -%>
   $("#nav_datasets_link").addClass("selected");
-  $("#dataset_downloads a").tooltip({ effect: 'slide'}).dynamic();
+  $("#dataset_downloads a").tooltip({ effect: 'slide', offset: [12, 0]}).dynamic();
   $("#dataset_downloads a").click(function() {
     $.post('<%= count_download_dataset_path(@dataset) %>', function(data) {
       $("#download_count").html(parseInt($("#download_count").html())+1);
@@ -64,16 +64,12 @@
     <div class="clear_left"></div>
   </div>
 
-  <div class="box">
+  <div class="plain_box">
     <div id="dataset_desc">
       <%= image_tag @dataset.screenshot.url(:thumb) %>
       <%=h @dataset.description %>
     </div>
-    <div class="clear_left"></div>
-  </div>
-
-  <% unless @dataset.category.blank? and @dataset.tag_list.blank? -%>
-    <div class="box">
+    <% unless @dataset.category.blank? and @dataset.tag_list.blank? -%>
       <ul class="dataset_stats inline" id="dataset_taxonomy">
         <% unless @dataset.category.blank? -%>
           <li>
@@ -88,9 +84,9 @@
           </li>
         <% end -%>
       </ul>
-      <div class="clear_left"></div>
-    </div>
-  <% end -%>
+    <% end -%>
+    <div class="clear_left"></div>
+  </div>
 
   <div id="dataset_downloads" class="box">
     <h2 class="section_head download"><span id="download_counter"><span id="download_count"><%= @dataset.download_count %></span> downloads</span>Download This Data</h2>
