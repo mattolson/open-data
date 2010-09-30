@@ -69,6 +69,7 @@
       <%= image_tag @dataset.screenshot.url(:thumb) %>
       <%=h @dataset.description %>
     </div>
+    <div class="clear_left"></div>
     <% unless @dataset.category.blank? and @dataset.tag_list.blank? -%>
       <ul class="dataset_stats inline" id="dataset_taxonomy">
         <% unless @dataset.category.blank? -%>
@@ -84,8 +85,8 @@
           </li>
         <% end -%>
       </ul>
+      <div class="clear_left"></div>
     <% end -%>
-    <div class="clear_left"></div>
   </div>
 
   <div id="dataset_downloads" class="box">
@@ -97,7 +98,7 @@
           <div class="tooltip">
             <dl class="inline">
               <dt>File:</dt>
-              <dd><%=h a.attachment_file_name %></dd>
+              <dd><%=h truncate(a.attachment_file_name,20) %></dd>
               <dt>Date:</dt>
               <dd><%= format_date(a.attachment_updated_at) %></dd>
               <dt>Size:</dt>

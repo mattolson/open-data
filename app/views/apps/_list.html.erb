@@ -1,6 +1,6 @@
 <% apps.each do |app| -%>
   <div class="box_header">
-    <h2><%= link_to 'Visit Site &raquo;', app.application_link, :target => '_blank' %><%=h app.title %></h2>
+    <h2><%= link_to 'Visit Site &raquo;', app.application_link, :target => '_blank', :class => 'view_all' %><%=h app.title %></h2>
   </div>
   <div class="box">
     <%= link_to image_tag(app.screenshot.url(:thumb), :class => 'thumb'), app.application_link, :target => '_blank', :class => 'clear' %>
