@@ -113,8 +113,8 @@
   </div>
 
   <h2 class="section_head pencil"><%= link_to 'Submit your application of this data &raquo;', new_app_path, :id => 'new_app_link' %>Applications Of This Data</h2>
-  <% if @dataset.apps.size > 0 -%>
-    <% @dataset.apps.each_with_index do |app,i| -%>
+  <% if @apps.size > 0 -%>
+    <% @apps.each_with_index do |app,i| -%>
       <div class="box dataset_two_col<%= i > 0 && ((i+1) % 2) == 0 ? ' last' : '' %>">
         <%= link_to image_tag(app.screenshot.url(:thumb), :class => 'thumb'), app.application_link, :class => "clear", :target => "_blank" %>
         <div class="contents">

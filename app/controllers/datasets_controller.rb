@@ -17,6 +17,7 @@ class DatasetsController < ApplicationController
   # GET /datasets/1.xml
   def show
     @tags = @dataset.tags_on(:tags).map { |tag| tag.id }
+    @apps = @dataset.apps.find(:all, :conditions => ['is_published = ?', true])
     respond_to do |wants|
       wants.html # show.html.erb
       wants.xml  { render :xml => @dataset }
