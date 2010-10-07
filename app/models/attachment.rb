@@ -7,9 +7,9 @@ class Attachment < ActiveRecord::Base
                     :storage        => :s3,
                     :path           => "#{ ENV['RAILS_ENV'] }/datasets/attachments/:id/:filename",
                     :s3_headers     => {'Content-Disposition' => 'attachment'},
-                    :bucket         => ENV['S3_BUCKET'],
-                    :s3_credentials => { :access_key_id     => ENV['S3_KEY'],
-                                         :secret_access_key => ENV['S3_SECRET'] }
+                    :bucket         => Configs.s3_bucket,
+                    :s3_credentials => { :access_key_id     => Configs.s3_key,
+                                         :secret_access_key => Configs.s3_secret }
   # Validations
   validates_attachment_presence :attachment
   validates_attachment_size :attachment, :less_than => 50.megabytes

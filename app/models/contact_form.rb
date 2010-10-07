@@ -1,6 +1,6 @@
 class ContactForm < MailForm
-  sender Configs.notification_email_from
-  recipients Configs.notification_email_to
+  sender Configs.notification_email
+  recipients Configs.notification_email
   subject "Contact - Open Data Project"
 
   attribute :name,    :validate => true

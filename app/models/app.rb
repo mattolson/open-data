@@ -8,9 +8,9 @@ class App < ActiveRecord::Base
                     :convert_options => { :thumb => "-background transparent -gravity center -extent 100x100" },
                     :storage        => :s3,
                     :path           => "#{ ENV['RAILS_ENV'] }/apps/:id/:style_:filename",
-                    :bucket         => ENV['S3_BUCKET'],
-                    :s3_credentials => { :access_key_id     => ENV['S3_KEY'],
-                                         :secret_access_key => ENV['S3_SECRET'] }
+                    :bucket         => Configs.s3_bucket,
+                    :s3_credentials => { :access_key_id     => Configs.s3_key,
+                                         :secret_access_key => Configs.s3_secret }
 
   # Validation
   validates_presence_of :title, :description, :submitter_name, :datasets

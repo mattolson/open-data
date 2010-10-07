@@ -10,7 +10,7 @@
   -%>
   (function() {
    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-   dsq.src = 'http://<%= ENV["DISQUS_SHORTNAME"] %>.disqus.com/get_num_replies.js?<%= replies_query %>';
+   dsq.src = 'http://<%= Configs.disqus_shortname %>.disqus.com/get_num_replies.js?<%= replies_query %>';
    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 <% end -%>

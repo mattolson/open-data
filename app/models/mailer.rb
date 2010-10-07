@@ -11,7 +11,7 @@ class Mailer < ActionMailer::Base
   
   private
     def setup
-      from Configs.notification_email_from
-      recipients Configs.notification_email_to
+      from Configs.notification_email
+      recipients Configs.notification_email
     end
 end

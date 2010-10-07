@@ -45,21 +45,41 @@ class Configs
     @@DATASET_CERTIFICATIONS = [{}]
   end
   
-  # Name of company running this site (for press items and such)
+  # S3 access key id
+  def self.s3_key
+    return @@S3_KEY if defined?(@@S3_KEY)
+    @@S3_KEY = ENV['S3_KEY']
+  end
+
+  # S3 access key secret
+  def self.s3_secret
+    return @@S3_SECRET if defined?(@@S3_SECRET)
+    @@S3_SECRET = ENV['S3_SECRET']
+  end
+
+  # S3 bucket
+  def self.s3_bucket
+    return @@S3_BUCKET if defined?(@@S3_BUCKET)
+    @@S3_BUCKET = ENV['S3_BUCKET']
+  end
+
+  # Disqus shortname
+  def self.disqus_shortname
+    return @@DISQUS_SHORTNAME if defined?(@@DISQUS_SHORTNAME)
+    @@DISQUS_SHORTNAME = ENV['DISQUS_SHORTNAME']
+  end
+  
+  # Name of company running this site (for press items related to dataset updates)
   def self.company_name
     return @@COMPANY_NAME if defined?(@@COMPANY_NAME)
-    @@COMPANY_NAME = 'Seventh Generation'
+    @@COMPANY_NAME = ENV['COMPANY_NAME']
   end
 
   # Email address to use for site notifications
-  def self.notification_email_from
-    return @@NOTIFICATION_EMAIL_FROM if defined?(@@NOTIFICATION_EMAIL_FROM)
-    @@NOTIFICATION_EMAIL_FROM = '"Open Data App" <app@rubycloud.com>'
-  end
-
-  # Email address to use for site notifications
-  def self.notification_email_to
-    return @@NOTIFICATION_EMAIL_TO if defined?(@@NOTIFICATION_EMAIL_TO)
-    @@NOTIFICATION_EMAIL_TO = '"Matt Olson" <molson@rubycloud.com>'
+  def self.notification_email
+    return @@NOTIFICATION_EMAIL if defined?(@@NOTIFICATION_EMAIL)
+    admin = Admin.find(:first)
+    admin_email = admin ? admin.email : ''
+    @@NOTIFICATION_EMAIL = "\"#{self.company_name} Open Data Project\" <#{admin_email}>"
   end
 end

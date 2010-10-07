@@ -42,15 +42,16 @@ How To Get Started
 ==================
 
 - Fork this project
-- Customize the CSS to add your company branding
-- Sign up for Heroku and Amazon S3
-- Copy config/heroku_env.rb.template to config/heroku_env.rb and update accordingly
-- Add config variables to Heroku env with heroku config:add
-- Push to Heroku
-- Create admin account with console: heroku console, then Admin.create(:email => 'youremail', :password => 'yourpassword')
+- Sign up for Heroku and follow the Getting Started Guide: http://docs.heroku.com/quickstart
+- Sign up for Amazon S3: http://aws.amazon.com/
+- Copy config/heroku_env.rb.template to config/heroku_env.rb and update accordingly.
+  These values are used for local development.
+- Add corresponding config variables to Heroku environment with heroku config:add
+- Create admin account with heroku console: Admin.create(:email => 'youremail', :password => 'yourpassword')
 - Customize site settings
 - Customize Devise settings
 - Customize config.action_mailer.default_url_options in environments/production.rb
+- Customize the CSS to add your company branding
 - Publish your data
 
 

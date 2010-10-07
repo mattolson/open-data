@@ -1,6 +1,6 @@
 class SignupForm < MailForm
-  sender Configs.notification_email_from
-  recipients Configs.notification_email_to
+  sender Configs.notification_email
+  recipients Configs.notification_email
   subject "Email Signup - Open Data Project"
 
   attribute :email, :validate => ARValidation::EMAIL_RE
