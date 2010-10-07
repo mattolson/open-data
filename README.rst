@@ -46,11 +46,11 @@ How To Get Started
 - Sign up for Amazon S3: http://aws.amazon.com/
 - Copy config/heroku_env.rb.template to config/heroku_env.rb and update accordingly.
   These values are used for local development.
-- Add corresponding config variables to Heroku environment with heroku config:add
-- Create admin account with heroku console: Admin.create(:email => 'youremail', :password => 'yourpassword')
-- Customize site settings
-- Customize Devise settings
+- Add corresponding config variables to Heroku environment using "heroku config:add"
+- Create admin account using "heroku console": Admin.create(:email => 'youremail', :password => 'yourpassword')
+- Customize Devise mailer_sender in config/initializers/devise.rb
 - Customize config.action_mailer.default_url_options in environments/production.rb
+- Take a look at config/configs.rb and update where appropriate
 - Customize the CSS to add your company branding
 - Publish your data
 
